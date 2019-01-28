@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
   validates_presence_of :title
-  has_many :rsvps, as: :attendees
+  has_many :attendee_list, class_name: 'Rsvp'
 end
