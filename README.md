@@ -11,7 +11,7 @@ WeMeet is an API-only app that helps people to organize groups and events around
 The live site can be viewed [here]().
 
 ## Features included:
-* 
+* Client can access available events
 
 ## Screenshots
 
