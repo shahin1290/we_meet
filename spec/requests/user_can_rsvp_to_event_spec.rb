@@ -18,11 +18,21 @@ describe 'POST /events/:id/attendees' do
     end
 
     it 'responds with success message' do
-      expect(JSON.parse(response.body)['message']).to eq 'Your RSVP was successfylly processed'
+      expect(response_json['message']).to eq 'Your RSVP was successfylly processed'
     end
+
   end
 
   describe 'POST req with invalid credentials (no user is logged in on the client)' do 
+    let(:invalid_headers) { { HTTP_ACCEPT: 'application/json' } }
+
+    before do
+      post "/events/#{event.id}/attendees", headers: invalid_headers
+    end
+
+    it 'responds with error message' do
+      expect(response_json['errors'][0]).to eq 'You need to sign in or sign up before continuing.'
+    end
 
   end
 end

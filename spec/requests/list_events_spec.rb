@@ -12,6 +12,6 @@ describe 'GET /events' do
   end
 
   it 'returns 3 events' do
-    expect(JSON.parse(response.body)['events'].count).to eq 3
+    expect(response_json['events'].count).to eq 3
   end
 end

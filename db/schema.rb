@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_194331) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "attendees"
   end
 
   create_table "rsvps", force: :cascade do |t|
