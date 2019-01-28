@@ -7,7 +7,7 @@ describe 'POST /events/:id/attendees' do
   let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
 
   before do
-    get "/events/#{event.id}/attendees", headers: headers, params: { user_id: user.id }
+    post "/events/#{event.id}/attendees", headers: headers, params: { user_id: user.id }
   end
 
   it 'adds user to list of attendees for event' do

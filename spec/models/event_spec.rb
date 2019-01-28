@@ -11,6 +11,10 @@ RSpec.describe Event, type: :model do
     it { is_expected.to validate_presence_of :title }
   end
 
+  describe 'Associations' do 
+    it { is_expected.to have_many :attendees}
+  end
+
   describe 'Factory' do
     it 'is valid' do
       expect(create(:event)).to be_valid
