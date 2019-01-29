@@ -2,26 +2,28 @@ import React, { Component } from 'react';
 import axios from "axios"
 
 class Events extends Component {
-  // constructor () {
-  //   // this.state = {
-  //   //   events: ''
-  //   // }
-  //   super(props);
-  // }
+ 
+  state = {
+    events: []
+  }
 
   async getEvents() {
-    // var data = await axios.get("http://localhost:3000/events")
+    const res = await axios.get("http://localhost:3000/events")
+    
+    const events = res.data.events
+    this.setState({ events });
 
   }
 
   componentDidMount() {
+    this.getEvents()
   }
 
   render () {
     return (
-      <div>
-        <h1>Hello</h1>
-      </div>
+      <ul>
+        { this.state.events.map(event => <li>{event.title}</li>)}
+      </ul>
     )
   }
 }
