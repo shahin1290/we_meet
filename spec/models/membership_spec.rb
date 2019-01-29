@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 describe Membership, type: :model do
   describe 'DB table' do
