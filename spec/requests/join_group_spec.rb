@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 describe 'POST /groups/:id/members' do
+  let(:user) { create(:user) }
   let(:group) { create(:group) }
 
   describe 'POST req with valid credentials' do
