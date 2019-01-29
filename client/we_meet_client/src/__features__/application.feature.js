@@ -1,14 +1,15 @@
 describe('WeMeet App', () => {
-  beforeAll(async () => {
-      await page.goto(appURL);
-  });
+    beforeAll(async () => {
+        jest.setTimeout(10000);
+        await page.goto(appURL);
+    });
 
-  beforeEach(async () => {
-      await page.reload();
-  });
+    beforeEach(async () => {
+        await page.reload();
+    });
 
-  it('should display "Learn React" text on page', async () => {
-      await expect(page).toMatch('Learn React');
-  });
+    it('should display "Learn React" text on page', async () => {
+        await expect(page).toMatch('Learn React');
+    });
 
 }); 
