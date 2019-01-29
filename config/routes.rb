@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:index] do
     resources :memberships, only: [:create]
+    resources :events, only: [:index]
   end
   
 end
