@@ -12,4 +12,8 @@ describe('WeMeet App', () => {
         await expect(page).toMatch('Learn React');
     });
 
+    it("should list 3 events", sync () => {
+        
+    })
+
 }); 
