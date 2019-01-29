@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :event do
-    title { "MyString" }
+    title { "EventName" }
     group
   end
 end
