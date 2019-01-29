@@ -1,5 +1,6 @@
 # WeMeet API app
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2fd9b247ee7e4f758a07f6ab46c7fa78)](https://app.codacy.com/app/CraftAcademy/we_meet?utm_source=github.com&utm_medium=referral&utm_content=CraftAcademy/we_meet&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://semaphoreci.com/api/v1/craftacademy/we_meet/branches/development/badge.svg)](https://semaphoreci.com/craftacademy/we_meet)
 
 [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/we_meet/badge.svg?branch=development)](https://coveralls.io/github/CraftAcademy/we_meet?branch=development)
