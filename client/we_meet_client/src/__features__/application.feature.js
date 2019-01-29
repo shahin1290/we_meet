@@ -1,6 +1,6 @@
 describe('WeMeet App', () => {
   beforeAll(async () => {
-      await page.goto('http://localhost:3001');
+      await page.goto(appURL);
   });
 
   beforeEach(async () => {
