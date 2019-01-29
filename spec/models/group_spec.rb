@@ -9,13 +9,13 @@ RSpec.describe Group, type: :model do
     it { is_expected.to validate_presence_of :name }
   end
 
-  #describe 'Associations' do
-    #it { is_expected.to have_many :attendees }
-  #end
+  describe 'Associations' do
+    it { is_expected.to have_many :members }
+  end
 
   describe 'Factory' do
     it 'is valid' do
-      expect(create(:name)).to be_valid
+      expect(create(:group)).to be_valid
     end
   end
 end

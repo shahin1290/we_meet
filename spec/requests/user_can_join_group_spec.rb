@@ -1,20 +1,19 @@
 # frozen_string_literal: true
 
-describe 'POST /groups/:id/members' do
+describe 'POST /groups/:id/memberships' do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
-  let(:event) { create(:event) }
 
   describe 'POST req with valid credentials' do
     let(:user_credentials) { user.create_new_auth_token }
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     
     before do
-      post "/groups/#{group.id}/members", headers: headers
+      post "/groups/#{group.id}/memberships", headers: headers
     end
 
     it 'adds user to list of members for group' do
-      members = event.members.map(&:user)
+      members = group.members.map(&:user)
       expect(members).to include user
     end
 

@@ -9,5 +9,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   include DeviseTokenAuth::Concerns::User
+  
   has_many :rsvps
+  has_many :memberships
 end

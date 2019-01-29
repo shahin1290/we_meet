@@ -11,6 +11,7 @@ describe User, type: :model do
 
   describe 'Associations' do
     it { is_expected.to have_many :rsvps }
+    it { is_expected.to have_many :memberships }
   end
 
   describe 'Factory' do
