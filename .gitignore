@@ -21,3 +21,5 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /coverage/*
+
+/client/we_meet_client/node_modules
