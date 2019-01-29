@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_29_093110) do
+ActiveRecord::Schema.define(version: 2019_01_29_102919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,9 +27,13 @@ ActiveRecord::Schema.define(version: 2019_01_29_093110) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "memberships", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "group_id"
+    t.index ["group_id"], name: "index_members_on_group_id"
+    t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "rsvps", force: :cascade do |t|
@@ -71,6 +75,8 @@ ActiveRecord::Schema.define(version: 2019_01_29_093110) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "members", "groups"
+  add_foreign_key "members", "users"
   add_foreign_key "rsvps", "events"
   add_foreign_key "rsvps", "users"
 end

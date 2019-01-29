@@ -3,6 +3,7 @@
 describe 'POST /groups/:id/members' do
   let(:user) { create(:user) }
   let(:group) { create(:group) }
+  let(:event) { create(:event) }
 
   describe 'POST req with valid credentials' do
     let(:user_credentials) { user.create_new_auth_token }
