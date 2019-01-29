@@ -1,3 +1,4 @@
+
 describe('WeMeet App', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);
@@ -12,8 +13,8 @@ describe('WeMeet App', () => {
         await expect(page).toMatch('Learn React');
     });
 
-    it("should list 3 events", sync () => {
-        
+    it("should list 3 events", async () => {
+        const liElementsCount = await page.$$eval('li', arr => arr.length);
+        await expect(liElementsCount).toEqual(3)
     })
-
 }); 

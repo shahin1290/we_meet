@@ -29,6 +29,7 @@
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.8.0",
     "jest-dev-server": "^3.9.0",
+    "jest-mock-axios": "^2.1.11",
     "jest-puppeteer": "^3.9.0",
     "puppeteer": "^1.11.0",
     "react-scripts": "^2.1.3",
