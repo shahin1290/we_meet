@@ -13,12 +13,16 @@ describe 'POST /events/:id/attendees' do
     end
 
     it 'adds user to list of attendees for event' do
-      attendees = event.attendee_list.map(&:user)
+      attendees = event.attendees.map(&:user)
       expect(attendees).to include user
     end
 
     it 'responds with success message' do
       expect(response_json['message']).to eq 'Your RSVP was successfylly processed'
+    end
+
+    it 'responds with status 200' do
+      expect(response).to have_http_status 200
     end
 
   end
@@ -31,7 +35,11 @@ describe 'POST /events/:id/attendees' do
     end
 
     it 'responds with error message' do
-      expect(response_json['errors'][0]).to eq 'You need to sign in or sign up before continuing.'
+      expect(response_json['errors']).to include 'You need to sign in or sign up before continuing.'
+    end
+
+    it 'responds with status 401' do
+      expect(response).to have_http_status 401
     end
 
   end

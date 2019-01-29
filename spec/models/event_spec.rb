@@ -10,7 +10,7 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'Associations' do
-    it { is_expected.to have_many :attendee_list }
+    it { is_expected.to have_many :attendees }
   end
 
   describe 'Factory' do

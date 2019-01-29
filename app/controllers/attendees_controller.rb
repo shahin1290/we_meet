@@ -5,9 +5,7 @@ class AttendeesController < ApplicationController
 
   def create
     event = Event.find(params[:event_id])
-    event.attendee_list.new(user: current_user)
-    if event.save
-      render json: { message: 'Your RSVP was successfylly processed' }
-    end
+    event.attendees.create(user: current_user)
+    render json: { message: 'Your RSVP was successfylly processed' }
   end
 end
