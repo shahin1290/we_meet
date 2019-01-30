@@ -2,10 +2,11 @@
 
 describe Events::ForGroupCollectionSerializer, type: :serializer do
   let(:sample) { create(:event) }
-  subject { described_class.new(sample) }
+  let(:serialization) { described_class.new(sample) }
+  subject { JSON.parse(serialization.to_json) }
 
   it 'contains relevant keys' do
-    expected_keys = %i[id title date]
-    expect(subject.attributes.keys).to match expected_keys
+    expected_keys = %w[id title date]
+    expect(subject.keys).to match expected_keys
   end
 end

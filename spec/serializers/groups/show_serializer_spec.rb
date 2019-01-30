@@ -6,10 +6,11 @@ describe Groups::ShowSerializer, type: :serializer do
     3.times { create(:event, group: sample, date: 1.day.from_now) }
     3.times { create(:event, group: sample, date: 1.day.ago) }
   end
-  subject { described_class.new(sample) }
+  let(:serialization) { described_class.new(sample) }
+  subject { JSON.parse(serialization.to_json) }
 
   it 'contains relevant keys' do
-    expected_keys = %i[id name]
-    expect(subject.attributes.keys).to match expected_keys
+    expected_keys = %w[id name future_events past_events]
+    expect(subject.keys).to match expected_keys
   end
 end
