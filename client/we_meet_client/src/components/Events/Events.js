@@ -20,9 +20,12 @@ class Events extends Component {
 
   render() {
     return (
-      <ul>
-        {this.state.events.map(event => <li>{event.title}</li>)}
-      </ul>
+      <div>
+        <h3>Events List</h3>
+        <ul>
+          {this.state.events.map(event => <li>{event.title}</li>)}
+        </ul>
+      </div>
     )
   }
 }
