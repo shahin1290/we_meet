@@ -1,14 +1,19 @@
 # frozen_string_literal: true
 
 describe 'GET /groups/:id' do
-  let!(:group) { create(:group) } 
-  let!(:events) { 3.times { create(:event, group: group) } }
+  let!(:group_1) { create(:group) } 
+  let!(:group_2) { create(:group) } 
 
-  before do
-    get "/groups/#{group.id}", headers: headers
+  let!(:events) do 
+    3.times { create(:event, group: group_1) }
+    3.times { create(:event, group: group_2) }
   end
 
-  xit 'lists events belonging to the group' do
+  before do
+    get "/groups/#{group_1.id}", headers: headers
+  end
+
+  it 'lists events belonging to the group' do
     ids_list = group_1.events.map(&:group_id)
     expect(ids_list).not_to include group_2.id
   end
@@ -18,7 +23,6 @@ describe 'GET /groups/:id' do
   end
 
   it 'returns 3 events' do
-    binding.pry
     expect(response_json['group']['events'].count).to eq 3
   end
 end

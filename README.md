@@ -15,7 +15,7 @@ The live site can be viewed [here]().
 * Client can access available events
 * User can RSVP to events
 * User can join a group
-* List events belonging to a group
+* List groups with its events
 
 ## Screenshots
 

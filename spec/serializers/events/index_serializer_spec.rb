@@ -5,7 +5,7 @@ describe Events::IndexSerializer, type: :serializer do
   subject { described_class.new(sample) }
 
   it 'contains relevant keys' do
-    expected_keys = %i[id title]
+    expected_keys = %i[id title date]
     expect(subject.attributes.keys).to match expected_keys
   end
 end
