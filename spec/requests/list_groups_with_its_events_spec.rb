@@ -18,6 +18,7 @@ describe 'GET /groups/:id' do
   end
 
   it 'returns 3 events' do
+    binding.pry
     expect(response_json['group']['events'].count).to eq 3
   end
 end
