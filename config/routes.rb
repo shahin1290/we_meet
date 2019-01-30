@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     resources :attendees, only: [:create]
   end
 
-  resources :groups, only: [:index] do
+  resources :groups, only: [:index, :show] do
     resources :memberships, only: [:create]
+    resources :events, only: [:index]
   end
   
 end

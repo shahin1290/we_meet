@@ -1,3 +1,4 @@
 class Events::IndexSerializer < ActiveModel::Serializer
-  attributes :id, :title
+  attributes :id, :title, :date
+  belongs_to :group
 end
