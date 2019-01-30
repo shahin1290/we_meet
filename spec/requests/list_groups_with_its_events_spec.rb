@@ -6,16 +6,13 @@ describe 'GET /groups/:id' do
 
   let!(:events) do 
     3.times { create(:event, group: group_1, date: 1.day.from_now) }
-    3.times { create(:event, group: group_2) }
+    3.times { create(:event, group: group_1, date: 1.day.ago) }
+    3.times { create(:event, group: group_2, date: 1.day.from_now) }
+    3.times { create(:event, group: group_2, date: 1.day.ago) }
   end
 
   before do
     get "/groups/#{group_1.id}", headers: headers
-  end
-
-  it 'lists events belonging to the group' do
-    ids_list = group_1.events.map(&:group_id)
-    expect(ids_list).not_to include group_2.id
   end
 
   it 'returns 200' do 
@@ -23,6 +20,10 @@ describe 'GET /groups/:id' do
   end
 
   it 'returns 3 future events' do
-    expect(response_json['group']['events'].count).to eq 3
+    expect(response_json['group']['future_events'].count).to eq 3
+  end
+
+  it 'returns 3 past events' do
+    expect(response_json['group']['past_events'].count).to eq 3
   end
 end
