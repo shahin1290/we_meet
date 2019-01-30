@@ -17,7 +17,7 @@ RSpec.describe Event, type: :model do
   describe 'Scopes' do
     let!(:future_event) { create(:event, date: 1.day.from_now) }
     let!(:past_event) { create(:event, date: 1.day.ago) }
-    let!(:todays_event) { create(:event, date: Date.today) }
+    let!(:todays_event) { create(:event, date: Time.zone.today) }
 
     describe '.future_events' do
       it 'displays events for today' do
