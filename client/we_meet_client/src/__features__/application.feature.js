@@ -10,8 +10,8 @@ describe('WeMeet App', () => {
         await page.reload();
     });
 
-    it('should display "Learn React" text on page', async () => {
-        await expect(page).toMatch('Learn React');
+    it('should display "WeMeet" text on page', async () => {
+        await expect(page).toMatch('WeMeet');
     });
 
     it("should list 2 events", async () => {
