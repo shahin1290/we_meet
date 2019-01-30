@@ -13,6 +13,7 @@ gem 'bootsnap', '>= 1.2', require: false
 gem 'rack-cors', require: 'rack/cors'
 gem 'active_model_serializers'
 gem 'devise_token_auth'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'pry-rails'
