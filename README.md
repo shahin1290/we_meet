@@ -22,6 +22,23 @@ The live site can be viewed [here]().
 * Ruby on Rails
 * Rspec for unit testing
 
+## FrontEnd test
+
+We are writing component specs in Jest and Enzyme
+
+```
+$ npm run tests:specs
+```
+
+We are writing acceptance tests (e2e) using Jest and Puppeteer
+
+
+```
+$ npm run tests:features
+```
+
+Puppeteer Matchers and API can be found on https://github.com/GoogleChrome/puppeteer/blob/v1.11.0/docs/api.md#pageselector
+
 ## To use this code
 * Clone the repo from [] and `cd` into the project folder
 * Run `bundle` to install all Ruby gems
