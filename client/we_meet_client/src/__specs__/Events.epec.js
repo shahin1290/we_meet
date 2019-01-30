@@ -1,5 +1,3 @@
-// "{\"events\":[{\"id\":93,\"title\":\"MyString\"},{\"id\":94,\"title\":\"MyString\"},{\"id\":95,\"title\":\"MyString\"}]}"
-
 import React from 'react';
 import { shallow } from 'enzyme';
 

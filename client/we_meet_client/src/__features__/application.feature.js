@@ -3,9 +3,7 @@ require('../__mocks__/eventsMock')
 describe('WeMeet App', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);
-
         await page.goto(appURL);
-
     });
 
     beforeEach(async () => {
