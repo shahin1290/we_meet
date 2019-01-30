@@ -8,6 +8,15 @@ class GroupsController < ApplicationController
   end
 
   def create
-    render json: { message: 'You have created a group successfully' }
+    group = Group.new(params.require(:group).permit(:name))
+    if group.save
+      render json: { message: 'You have created a group successfully' }
+    else
+      render json: { error: group.errors.full_messages }
+    end
   end
+
 end
+
+
+

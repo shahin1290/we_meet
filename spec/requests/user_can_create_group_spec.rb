@@ -2,14 +2,13 @@
 
 describe 'POST /groups' do
   let(:user) { create(:user) }
-  let(:group) { create(:group) }
 
   describe 'POST req with valid credentials' do
     let(:user_credentials) { user.create_new_auth_token }
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     
     before do
-      post "/groups", headers: headers
+      post "/groups", params: { group: {name: 'coding'} }, headers: headers
     end
 
     it 'responds with success message' do
