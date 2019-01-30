@@ -4,6 +4,6 @@ class GroupsController < ApplicationController
 
   def show
     group = Group.find(params[:id])
-    render json: group, serializer: Group::ShowSerializer
+    render json: group, serializer: Groups::ShowSerializer
   end
 end
