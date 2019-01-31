@@ -17,6 +17,7 @@ The live site can be viewed [here]().
 * User can join a group
 * List groups with its events
 * Organizer can create an event
+* User can create a group
 
 ## Screenshots
 
