@@ -14,7 +14,7 @@ class GroupsController < ApplicationController
     if group.save
       render json: { message: 'You have created a group successfully' }
     else
-      render json: { error: group.errors.full_messages }
+      render json: { error: group.errors.full_messages }, status: 400
     end
   end
 

@@ -20,6 +20,23 @@ describe 'POST /groups' do
     end
   end
 
+  describe 'POST req with no group name' do
+    let(:user_credentials) { user.create_new_auth_token }
+    let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
+    
+    before do
+      post "/groups", params: { group: {name: ''} }, headers: headers
+    end
+
+    it 'responds with error message' do
+      expect(response_json['error']).to include "Name can't be blank"
+    end
+
+    it 'responds with status 400' do
+      expect(response).to have_http_status 400
+    end
+  end
+
   describe 'POST req with invalid credentials (no user is logged in on the client)' do 
     let(:invalid_headers) { { HTTP_ACCEPT: 'application/json' } }
 
