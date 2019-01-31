@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :groups, only: [:index, :show] do
     resources :memberships, only: [:create]
-    resources :events, only: [:index]
+    resources :events, only: [:index, :create]
   end
   
 end
