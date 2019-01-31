@@ -1,9 +1,9 @@
 describe 'POST /events' do
   let(:user) { create(:user) }
-  let!(:group_1) { create(:group) } 
+  let!(:group) { create(:group) } 
 
   let!(:events) do 
-    3.times { create(:event, group: group_1) }
+    3.times { create(:event, group: group) }
   end
 
   describe 'POST req with valid credentials' do
@@ -11,7 +11,7 @@ describe 'POST /events' do
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     
     before do
-      post "/groups/#{group_1.id}/events", params: { event: {title: 'Craft Academy'} }, headers: headers
+      post "/groups/#{group.id}/events", params: { event: {title: 'Craft Academy'} }, headers: headers
     end
 
     it 'responds with success message' do
