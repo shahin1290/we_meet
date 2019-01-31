@@ -19,5 +19,22 @@ describe 'POST /groups' do
       expect(response).to have_http_status 200
     end
   end
+
+  describe 'POST req with invalid credentials (no user is logged in on the client)' do 
+    let(:invalid_headers) { { HTTP_ACCEPT: 'application/json' } }
+
+    before do
+      post "/groups", params: { group: {name: 'coding'} }, headers: invalid_headers
+    end
+
+    it 'responds with error message' do
+      expect(response_json['errors']).to include 'You need to sign in or sign up before continuing.'
+    end
+
+    it 'responds with status 401' do
+      expect(response).to have_http_status 401
+    end
+
+  end
 end
 
