@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <>
         <AppHeader />
-        <Container>
+        <Container style={{marginTop: '20px'}}>
           <Events />
         </Container>
 

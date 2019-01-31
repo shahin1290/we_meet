@@ -21,7 +21,7 @@ const AppHeader = () => {
         <OutlineButton border="white" text="white" text-hocus="blue">
           Login
         </OutlineButton>
-        <OutlineButton border="white" text="white" text-hocus="blue">
+        <OutlineButton border="white" text="white" text-hocus="blue" style={{marginLeft: '10px'}}>
           Register
         </OutlineButton>
       </NavMenu>
