@@ -22,4 +22,21 @@ describe 'POST /events' do
       expect(response).to have_http_status 200
     end
   end
+
+  describe 'POST req with no event title' do
+    let(:user_credentials) { user.create_new_auth_token }
+    let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
+    
+    before do
+      post "/groups/#{group.id}/events", params: { event: {title: ''} }, headers: headers
+    end
+
+    it 'responds with error message' do
+      expect(response_json['error']).to include "Title can't be blank"
+    end
+
+    it 'responds with status 400' do
+      expect(response).to have_http_status 400
+    end
+  end
 end
