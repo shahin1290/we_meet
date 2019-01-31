@@ -9,7 +9,9 @@
     "tailwind-react-ui": "^0.8.1"
   },
   "scripts": {
-    "start": "PORT=3001 react-scripts start",
+    "build:css": "postcss src/css/tailwind.src.css -o src/css/tailwind.css",
+    "watch:css": "postcss src/css/tailwind.src.css -o src/css/tailwind.css -w",
+    "start": "npm run watch:css & PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test && jest -c jest.config.js",
     "eject": "react-scripts eject",
