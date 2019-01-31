@@ -1,3 +1,13 @@
+const plugins = require('tailwind-react-ui/plugins')
+
+module.exports = {
+  // ...project config
+  plugins: [
+    require('tailwindcss/plugins/container')({}),
+    ...Object.keys(plugins).map(name => plugins[name]()),
+  ],
+}
+
 /*
 
 Tailwind - The Utility-First CSS Framework
@@ -953,24 +963,17 @@ module.exports = {
   |
   */
 
- const plugins = require('tailwind-react-ui/plugins')
+//  const plugins = require('tailwind-react-ui/plugins')
 
-  plugins: [
-    require('tailwindcss/plugins/container')({
-      // center: true,
-      // padding: '1rem',
-    }),
-    ...Object.keys(plugins).map(name => plugins[name]()),
-  ],
+  // plugins: [
+  //   require('tailwindcss/plugins/container')({
+  //     // center: true,
+  //     // padding: '1rem',
+  //   })
+  // ],
 
 
-  // module.exports = {
-  //   // ...project config
-  //   plugins: [
-  //     require('tailwindcss/plugins/container')({}),
-  //     ...Object.keys(plugins).map(name => plugins[name]()),
-  //   ],
-  // }
+
 
 
   /*
