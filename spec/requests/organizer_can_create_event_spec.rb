@@ -15,7 +15,7 @@ describe 'POST /events' do
     end
 
     it 'responds with success message' do
-      expect(response_json['message']).to eq 'You have created an event successfully'
+      expect(response_json['message']).to eq 'You have successfully created an event'
     end
 
     it 'responds with status 200' do
@@ -35,8 +35,5 @@ describe 'POST /events' do
       expect(response_json['error']).to include "Title can't be blank"
     end
 
-    it 'responds with status 400' do
-      expect(response).to have_http_status 400
-    end
   end
 end

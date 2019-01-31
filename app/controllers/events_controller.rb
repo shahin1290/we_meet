@@ -9,12 +9,13 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params.merge(group_id: params[:group_id]))
-    if event.save
-      
-      render json: { message: 'You have created an event successfully' }
+    group = Group.find(params[:group_id])
+    event = group.events.create(event_params)
+    if event.persisted?
+
+      render json: { message: 'You have successfully created an event' }
     else
-      render json: { error: event.errors.full_messages }, status: 400
+      render json: { error: event.errors.full_messages }
     end
   end
 
