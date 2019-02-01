@@ -23,9 +23,10 @@ describe('visitor can RSVP to event', () => {
   describe('when user logged in', () => {
 
     it('displays updated attendee list upon rsvp', async () => {
+      // click the login
+      // click this one twice
       await page.click('button[id=attend-event-1]')
-      await expect(page).toMatch('Your attendance is confirmed! See you at the event.')
-      await expect(page).toMatch()    // how to check for an updated attendee list??
+      await expect(page).toMatch('Your RSVP was successfylly processed')
     })
     
   })
