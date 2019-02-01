@@ -1,4 +1,4 @@
-require('../__mocks__/registrationMock')
+// require('../__mocks__/eventsMock')
 
 describe('visitor can RSVP to event', () => {
   beforeAll(async () => {
@@ -6,12 +6,7 @@ describe('visitor can RSVP to event', () => {
     await page.goto(appURL);
   });
 
-  it('should list 2 events', async () => {
-    const liElementsCount = await page.$$eval('li', arr => arr.length);
-    await expect(liElementsCount).toEqual(2)
-  })
-
-  it('should route visitor to sign up & log in page upon RSVP', async () => {
+  xit('should route visitor to sign up & log in page upon RSVP', async () => {
     await page.click('input[name=.... key???]');   // how to click the right rsvp link
                                                   // how to confirm no user credentials
     await page.content('To RSVP, you must first sign up or log in')
@@ -20,17 +15,18 @@ describe('visitor can RSVP to event', () => {
   
   describe('when anonymous visitor', () => {
     
-    it('should route anonymous visitor to event attendance confirmation upon sign up', async () => {
-
+    it("renders a message 'You have to be logged in'", async () => {
+      await page.click('button[id=attend-event-1]')
+      await jestPuppeteer.debug()
     })
 
   })
 
-  desribe('when anonymous user', () => {
+  // describe('when anonymous user', () => {
 
-    it('should route anonymous user to event attendance confirmation upon log in up', async () => {
+  //   it('should route anonymous user to event attendance confirmation upon log in up', async () => {
       
-    })
+  //   })
 
-  })
+  // })
 })
