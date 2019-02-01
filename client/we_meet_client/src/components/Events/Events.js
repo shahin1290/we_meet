@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import axios from "axios"
+import axios from "axios";
+import { ErrorText, FillButton } from 'tailwind-react-ui';
 
 class Events extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { events: [] };
+    this.state = { events: [], message: '' };
   }
 
   async getEvents() {
@@ -20,20 +21,25 @@ class Events extends Component {
 
   async rsvpHandler(id) {
     try {
-      const response = await axios.post("http://localhost:3000/events/" + id + '/attendees')
+      await axios.post("http://localhost:3000/events/" + id + '/attendees')
     } catch(error) {
-      console.log(error.response.status)
+      let message = JSON.parse(error.request.responseText).errors[0]
+      this.setState({ message: message })
     }
-    debugger
   }
-
+  
   render() {
+    let errorMessage
+    if (this.state.message) {
+      errorMessage = <ErrorText>{this.state.message}</ErrorText>
+    }
     return (
       <div>
+        {errorMessage}
         <h3>Events List</h3>
         <ul>
           {this.state.events.map(event => <li key={event.id}>{event.title} 
-            <button id={`attend-event-${event.id}`} onClick={this.rsvpHandler.bind(this, event.id)} >RSVP</button>
+            <FillButton brand='secondary' small='true' id={`attend-event-${event.id}`} onClick={this.rsvpHandler.bind(this, event.id)} >RSVP</FillButton>
           </li>)}
         </ul>
       </div>

@@ -5,28 +5,28 @@ describe('visitor can RSVP to event', () => {
     jest.setTimeout(10000);
     await page.goto(appURL);
   });
-
-  xit('should route visitor to sign up & log in page upon RSVP', async () => {
-    await page.click('input[name=.... key???]');   // how to click the right rsvp link
-                                                  // how to confirm no user credentials
-    await page.content('To RSVP, you must first sign up or log in')
-    await expect(page).toMatch('Please sign up or sign in')
-  })
   
   describe('when anonymous visitor', () => {
     
-    it("renders a message 'You have to be logged in'", async () => {
+    it("renders a message 'You need to sign in or sign up before continuing.'", async () => {
       await page.click('button[id=attend-event-1]')
-      await jestPuppeteer.debug()
+      await expect(page).toMatch('You need to sign in or sign up before continuing.')
+      // await jestPuppeteer.debug()
     })
 
+    xit('returns visitor to event upon successful sign up', async () => {
+      // sign up steps
+      await expect(page).toMatch('Thanks for joining WeMeet.')
+    })
   })
 
-  // describe('when anonymous user', () => {
+  describe('when user logged in', () => {
 
-  //   it('should route anonymous user to event attendance confirmation upon log in up', async () => {
-      
-  //   })
-
-  // })
+    it('displays updated attendee list upon rsvp', async () => {
+      await page.click('button[id=attend-event-1]')
+      await expect(page).toMatch('Your attendance is confirmed! See you at the event.')
+      await expect(page).toMatch()    // how to check for an updated attendee list??
+    })
+    
+  })
 })
