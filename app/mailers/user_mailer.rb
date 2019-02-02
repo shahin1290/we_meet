@@ -1,7 +1,11 @@
-class userMailer < ApplicationMailer
-  default to: -> { @group.memberships.pluck(:email) },
-          from: 'notification@example.com'
-  def welcome_email
-    mail(subject: 'Welcome to My Awesome Site')
+class UserMailer < ApplicationMailer
+  default from: 'notification@example.com'
+
+  def welcome_email(recipients)
+    @recipients = recipients
+    mail(
+      to: recipients.pluck(:email), 
+      subject: "New comment on the Subvisual blog"
+    )
   end
 end

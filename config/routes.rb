@@ -12,6 +12,6 @@ Rails.application.routes.draw do
     resources :events, only: [:index, :create]
   end
 
-  get :send_mail, to: 'notifications#send_mail', as: :send_mail
+  get :'send_mail/:id', to: 'notifications#send_mail', as: :send_mail
   
 end

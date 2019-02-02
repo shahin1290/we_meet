@@ -1,9 +1,11 @@
 describe 'GET /notifications/send_email' do
-  let!(:group) { create(:group) } 
-    
   let!(:user_1) { create(:user, email: 'bill@mail.com') }
   let!(:user_2) { create(:user, email: 'jill@mail.com') }
+
   let(:user) { create(:user) }
+
+  let!(:group) { create(:group) } 
+  # let!(:event) { create(:event, group: group)}
 
   let(:user_credentials) { user.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
@@ -12,12 +14,11 @@ describe 'GET /notifications/send_email' do
   let!(:member2) { create(:membership, group: group, user: user_2) }
 
   before do
-    get "/send_mail", headers: headers
+    get "/send_mail/#{group.id}", headers: headers
   end
 
   it 'renders the receiver email' do
-    binding.pry
-    expect(mail.to).to eq([user.email])
+    expect(ActionMailer::Base.deliveries[0].to).to include(user_1.email)
   end
 end
 
