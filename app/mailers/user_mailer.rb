@@ -1,6 +1,7 @@
-class UserMailer < ApplicationMailer 
-  def welcome_email user
-    @user = user
-    mail(to: user.email, subject: 'Welcome to My Awesome Site')
+class userMailer < ApplicationMailer
+  default to: -> { @group.memberships.pluck(:email) },
+          from: 'notification@example.com'
+  def welcome_email
+    mail(subject: 'Welcome to My Awesome Site')
   end
 end

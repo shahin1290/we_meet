@@ -11,5 +11,7 @@ Rails.application.routes.draw do
     resources :memberships, only: [:create]
     resources :events, only: [:index, :create]
   end
+
+  get :send_mail, to: 'notifications#send_mail', as: :send_mail
   
 end
