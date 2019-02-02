@@ -2,14 +2,22 @@ import React, { Component } from 'react';
 import axios from "axios";
 import Auth from '../../services/Auth'
 
-import { ErrorText, FillButton } from 'tailwind-react-ui';
+import { ErrorText, FillButton, List, Text } from 'tailwind-react-ui';
 
 
 class Events extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { events: [], message: '', credentials: {} };
+    this.state = { events: [],  credentials: {} };
+  }
+
+  componentDidMount() {
+    this.getEvents()
+  }
+
+  componentWillMount() {
+    this.setState({ credentials: this.getCredentials() })
   }
 
   async getEvents() {
@@ -18,39 +26,42 @@ class Events extends Component {
     this.setState({ events });
   }
 
-  componentDidMount() {
-    this.getEvents()
+  async getCredentials() {
+    let credentials = await Auth.getUser()
+    return credentials
+  }
 
-  }
-  async rsvpHandler(id) {  
-    
-    Auth.getUser().then(credentials => {
-      this.setState({credentials: credentials})
-      this.forceUpdate()
-    })
-    try {
-      let response = await axios.post("http://localhost:3000/events/" + id + '/attendees', {}, { headers: this.state.credentials })
-      let message = response.data.message
-      this.setState({ message: message })
-    } catch (error) {
-      let message = JSON.parse(error.request.responseText).errors[0]
-      this.setState({ message: message })
-    }
-  }
 
   render() {
-    let errorMessage
-    if (this.state.message) {
-      errorMessage = <ErrorText>{this.state.message}</ErrorText>
+    let responseMessage
+    if (this.props.responseMessage) {
+      responseMessage = <ErrorText>{this.props.responseMessage}</ErrorText>
     }
+
+    const events = (
+      <List fullWidth>
+        {this.state.events.map(event =>
+          <React.Fragment key={event.id}>
+            <Text >{event.title}</Text>
+            <FillButton
+              brand='secondary'
+              small
+              id={`attend-event-${event.id}`}
+              onClick={this.props.rsvpHandler}
+            >
+              RSVP
+            </FillButton>
+          </React.Fragment>
+        )}
+      </List>
+    )
+
     return (
       <div>
-        {errorMessage}
+        {responseMessage}
         <h3>Events List</h3>
         <ul>
-          {this.state.events.map(event => <li key={event.id}>{event.title}
-            <FillButton brand='secondary' small id={`attend-event-${event.id}`} onClick={this.rsvpHandler.bind(this, event.id)} >RSVP</FillButton>
-          </li>)}
+          {events}
         </ul>
       </div>
     )
