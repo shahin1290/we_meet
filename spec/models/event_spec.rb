@@ -7,7 +7,6 @@ RSpec.describe Event, type: :model do
     it { is_expected.to have_db_column :location }
     it { is_expected.to have_db_column :organizer }
     it { is_expected.to have_db_column :date_and_time }
-    it { is_expected.to have_db_column :attendees }
   end
 
   describe 'Validations' do
