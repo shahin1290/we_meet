@@ -10,7 +10,7 @@ describe 'GET /cagegories/:id/groups' do
   end
 
   before do
-    get "/categories/#{category_1.id}/groups", headers: headers
+    get "/categories", headers: headers
   end
 
   it 'lists groups belonging to the categories' do
@@ -22,7 +22,7 @@ describe 'GET /cagegories/:id/groups' do
     expect(response).to have_http_status(200)
   end
 
-  it 'returns 3 groups' do
-    expect(response_json.count).to eq 3
+  it 'returns 2 categories' do
+    expect(response_json.count).to eq 2
   end
 end

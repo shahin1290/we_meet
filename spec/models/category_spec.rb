@@ -7,7 +7,7 @@ describe Category, type: :model do
   end
 
   describe 'Associations' do
-    it { is_expected.to has_many :groups }
+    it { is_expected.to have_many :groups }
   end
 
   describe 'Validations' do
