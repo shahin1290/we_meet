@@ -14,15 +14,15 @@ describe 'GET /cagegories/:id/groups' do
   end
 
   it 'lists groups belonging to the categories' do
-    ids_list = category_1.groups.map(&:category.id)
+    ids_list = category_1.groups.map(&:category_id)
     expect(ids_list).not_to include category_2.id
   end
 
-  it 'returns 200' do 
+  it 'returns 200' do
     expect(response).to have_http_status(200)
   end
 
   it 'returns 3 groups' do
-    expect(response_json['groups'].count).to eq 3
+    expect(response_json.count).to eq 3
   end
 end

@@ -2,6 +2,12 @@ class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
   def index
+    if params[:category_id]
+      groups = Group.where(category_id: params[:category_id])
+    else
+      groups = Group.all
+    end
+    render json: groups
   end
 
   def show
