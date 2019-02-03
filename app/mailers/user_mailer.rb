@@ -1,11 +1,10 @@
 class UserMailer < ApplicationMailer
-  default from: 'notification@example.com'
-
-  def welcome_email(recipients)
-    @recipients = recipients
+  def welcome_email(group, current_user)
+    recipients = group.members.map(&:user)
     mail(
+      from: current_user.email,
       to: recipients.pluck(:email), 
-      subject: "New comment on the Subvisual blog"
+      subject: "Notification from WeMeet"
     )
   end
 end
