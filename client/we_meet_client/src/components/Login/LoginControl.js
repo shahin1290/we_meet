@@ -23,12 +23,14 @@ class LoginControl extends Component {
 
     if (isLoggedIn) {
       startNewGroupLink =  <LinkButton text="grey-darkest" text-hocus="teal" style={{textDecoration: 'none'}}>Start a new group</LinkButton>
-      profileLink = <LinkButton text="grey-darkest" text-hocus="teal" style={{marginLeft: '10px', textDecoration: 'none'}}>Profile</LinkButton>
-      logoutButton = <OutlineButton onClick={this.handleLogoutClick} brand="primary" text-hocus="white" style={{marginLeft: '10px'}}>
-        Logout</OutlineButton>;
+      profileLink = <LinkButton text="grey-darkest" text-hocus="teal" style={{marginLeft: '13px', textDecoration: 'none'}}>Profile</LinkButton>
+      logoutButton = <OutlineButton onClick={this.handleLogoutClick} brand="primary" text-hocus="white" style={{marginLeft: '15px'}}>
+        Log out</OutlineButton>;
     } else {
-      loginButton = <OutlineButton onClick={this.handleLoginClick} brand="primary" text-hocus="white">Login</OutlineButton>;
-      registerButton = <OutlineButton brand="primary" text-hocus="white" style={{marginLeft: '10px'}}>Register</OutlineButton>
+      loginButton = <OutlineButton onClick={this.handleLoginClick} className="login-btn" brand="primary" text-hocus="white">
+        Log in</OutlineButton>;
+      registerButton = <OutlineButton brand="primary" text-hocus="white" style={{marginLeft: '10px'}}>
+        Sign up</OutlineButton>
     }
 
     return (

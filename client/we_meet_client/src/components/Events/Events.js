@@ -21,7 +21,7 @@ class Events extends Component {
   render() {
     return (
       <div>
-        <h3>Events List</h3>
+        <h3 style={{marginBottom: "4rem"}}>Events List</h3>
         <ul>
           {this.state.events.map(event => <li key={event.id}>{event.title}</li>)}
         </ul>
