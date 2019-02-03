@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   validates_presence_of :name
   has_many :members, class_name: 'Membership'
   has_many :events
+  belongs_to :category
 
   def future_events
     events.future_events
