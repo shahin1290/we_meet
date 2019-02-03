@@ -5,25 +5,19 @@ import {
   Box,
   NavToggle,
   NavMenu,
-  OutlineButton
 } from 'tailwind-react-ui';
 
+import logo from '../../wemeet_logo.png'
+import LoginControl from './LoginControl';
 
 
 const AppHeader = () => {
   return (
-    <Header bg="red" text="white" screen="md">
-      <NavBrand is="a" href="#header" font="semibold" text={['white', 'xl']}>
-        <Box inlineBlock>WeMeet</Box>
-      </NavBrand>
+    <Header bg="white" text="white" screen="md">
+      <img src={logo} alt="Logo" />
       <NavToggle />
       <NavMenu>
-        <OutlineButton border="white" text="white" text-hocus="blue">
-          Login
-        </OutlineButton>
-        <OutlineButton border="white" text="white" text-hocus="blue" style={{marginLeft: '10px'}}>
-          Register
-        </OutlineButton>
+        <LoginControl />
       </NavMenu>
     </Header>
   )
