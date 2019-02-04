@@ -4,7 +4,7 @@ describe 'GET /notifications/send_email' do
   let!(:user_3) { create(:user, email: 'Mill@mail.com') }
   let!(:user_4) { create(:user, email: 'Kill@mail.com') }
 
-  let(:user) { create(:user, email: 'jon@mail.com') }
+  let(:user) { create(:user) }
 
   let!(:group_1) { create(:group, name: 'Meeting') } 
   let!(:group_2) { create(:group, name: 'Eating') } 
@@ -28,7 +28,7 @@ describe 'GET /notifications/send_email' do
   end
 
   it 'renders the sender email' do
-    expect(ActionMailer::Base.deliveries[0].from).to include(user.email)
+    expect(ActionMailer::Base.deliveries[0].from).to include('shahin@jann.com')
   end
 
   it 'responds with success message' do
@@ -36,7 +36,7 @@ describe 'GET /notifications/send_email' do
   end
 
   it 'renders the subject' do
-    expect(ActionMailer::Base.deliveries[0].subject).to eq('Notification from WeMeet')
+    expect(ActionMailer::Base.deliveries[0].subject).to include('Notification from WeMeet')
   end
 
   it 'renders the body' do

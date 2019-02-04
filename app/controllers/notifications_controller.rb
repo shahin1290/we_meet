@@ -3,7 +3,7 @@ class NotificationsController < ApplicationController
 
   def send_mail
     group = Group.find(params[:id])
-    UserMailer.welcome_email(group, current_user).deliver
+    UserMailer.welcome_email(group).deliver
     render json: { message: 'Notifications sent successfully' }
   end
   
