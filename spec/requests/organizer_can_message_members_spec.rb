@@ -13,13 +13,12 @@ describe 'POST /groups/:group_id/notifications' do
       post "/groups/#{group.id}/notifications", headers: headers
     end
 
-    it 'renders the receiver email' do
+    it 'sents the email only to the specific group members' do
       expect(mail_delivery.to).to include(users[1].email)
-      expect(mail_delivery.to).to include(users[2].email)
       expect(mail_delivery.to).not_to include(users[0].email)
     end
 
-    it 'renders the sender email' do
+    it 'shows the email address of the sender' do
       expect(mail_delivery.from).to include('noreply@meetup.com')
     end
 
