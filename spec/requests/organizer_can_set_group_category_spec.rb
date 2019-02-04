@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe 'GET /cagegories/:id/groups' do
+describe 'GET /categories' do
   let!(:category_1) { create(:category) } 
   let!(:category_2) { create(:category) } 
 
