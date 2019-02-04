@@ -1,12 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as userActions from '../src/actions/actions';
 import './css/tailwind.css';
 import Events from './components/Events/Events';
 import AppHeader from './components/ui-components/AppHeader'
-import Auth from './services/Auth'
-import { Container } from 'tailwind-react-ui';
 import axios from "axios";
 import { signInUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
 import { Container, TailwindThemeProvider } from 'tailwind-react-ui';
@@ -20,49 +16,33 @@ class App extends Component {
     this.state = {
       headerMessage: '',
       containerMessage: '',
-      credentials: this.getCredentials()
+      email: 'rand@random.com',
+      password: 'password'
     };
-    this.fakeLogin = this.fakeLogin.bind(this)
-    this.submitForm = this.submitForm.bind(this)
+    this.authorizeUser = this.authorizeUser.bind(this)
     this.rsvp = this.rsvp.bind(this)
   }
 
 
-  async getCredentials() {
-    let credentials = await (await Auth.getUser())
-    return credentials
-  }
-
-  submitForm(e) {
+  authorizeUser(e) {
     e.preventDefault()
     const { signInUser } = this.props
     const {
       email,
       password,
     } = this.state
-    signInUser({ email: 'rand@random.com', password: 'password' }) // <-<-<-<-<- here's the important part <-<-<-<-<-
-      .then((user) => {
-        this.setState({ message: `You are logged in as ${user.uid}` })
+    signInUser({ email, password })
+      .then(() => {
+        this.setState({ headerMessage: `You are logged in` })
       })
-      .catch(() => {
-        this.setState({ message: `That did not fly....` })
+      .catch((error) => {
+        debugger;
+        console.log(error)
+        this.setState({ headerMessage: `That did not fly....` })
       })
-  }
-
-  fakeLogin() {
-    Auth.storeUser().then(() => {
-      Auth.getUser().then(user => {
-        this.setState({ message: `You are logged in as ${user.uid}` })
-      })
-    })
   }
 
   async rsvp(id) {
-    // Auth.getUser().then(credentials => {
-    //   this.setState({ credentials: credentials })
-    // })
-
-    // this.setState({credentials: await Auth.getUser()})
     try {
       let response = await axios.post("http://localhost:3000/events/" + id + '/attendees', {}, { headers: this.state.credentials })
 
@@ -83,7 +63,7 @@ class App extends Component {
             },
           }}
         >
-          <AppHeader loginHandler={this.submitForm} message={this.state.headerMessage}/>
+          <AppHeader loginHandler={this.authorizeUser} message={this.state.headerMessage}/>
           <Hero />
           <Container style={{marginTop: '20px'}}>
             <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} />

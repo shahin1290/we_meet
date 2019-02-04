@@ -9,13 +9,13 @@ import logo from '../../wemeet_logo.png'
 import LoginControl from '../Login/LoginControl';
 
 
-const AppHeader = () => {
+const AppHeader = (props) => {
   return (
     <Header bg="white" text="white" screen="md">
       <img src={logo} alt="logo" />
       <NavToggle />
       <NavMenu>
-        <LoginControl />
+        <LoginControl loginHandler={props.loginHandler} />
       </NavMenu>
     </Header>
   )

@@ -10,6 +10,7 @@ import { verifyCredentials } from './redux-token-auth-config' // <-- note this i
 
 
 const store = configureStore();
+verifyCredentials(store) // <-<-<-<-<- here's the important part <-<-<-<-<-
 
 
 render(

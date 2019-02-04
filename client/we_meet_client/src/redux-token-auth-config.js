@@ -11,6 +11,7 @@ const config = {
   },
 }
 
+
 const {
   registerUser,
   signInUser,
@@ -22,5 +23,5 @@ export {
   registerUser,
   signInUser,
   signOutUser,
-  verifyCredentials,
+  verifyCredentials
 }

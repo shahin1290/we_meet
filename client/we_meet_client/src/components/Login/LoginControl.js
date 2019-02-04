@@ -4,14 +4,11 @@ import { LinkButton, OutlineButton } from 'tailwind-react-ui';
 class LoginControl extends Component {
   constructor(props) {
     super(props);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
     this.state = { isLoggedIn: false };
   }
 
-  handleLoginClick() {
-    this.setState({isLoggedIn: true});
-  }
+
 
   handleLogoutClick() {
     this.setState({isLoggedIn: false});
@@ -27,7 +24,7 @@ class LoginControl extends Component {
       logoutButton = <OutlineButton onClick={this.handleLogoutClick} brand="primary" text-hocus="white" style={{marginLeft: '15px'}}>
         Log out</OutlineButton>;
     } else {
-      loginButton = <OutlineButton onClick={this.handleLoginClick} id="login-btn" brand="primary" text-hocus="white">
+      loginButton = <OutlineButton onClick={this.props.loginHandler} id="login-btn" brand="primary" text-hocus="white">
         Log in</OutlineButton>;
       registerButton = <OutlineButton brand="primary" text-hocus="white" style={{marginLeft: '10px'}}>
         Sign up</OutlineButton>

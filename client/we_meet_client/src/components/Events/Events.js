@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import Auth from '../../services/Auth'
+import { connect } from 'react-redux';
+
 
 import { ErrorText, FillButton, List, Text } from 'tailwind-react-ui';
 
+const mapStateToProps = (state) => {
+  debugger
+  return {
+    currentUser: { email: state.reduxTokenAuth.currentUser.attributes.email }
+  }
+}
 
 class Events extends Component {
 
@@ -58,13 +66,15 @@ class Events extends Component {
 
     return (
       <div>
+        {responseMessage}
         <h3 style={{ marginBottom: "4rem" }}>Events List</h3>
         <ul>
           {events}
         </ul>
+        {this.props.currentUser.email}
       </div>
     )
   }
 }
 
-export default Events;
+export default connect(mapStateToProps)(Events)
