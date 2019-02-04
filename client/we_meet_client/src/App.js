@@ -9,9 +9,9 @@ import Auth from './services/Auth'
 import { Container } from 'tailwind-react-ui';
 import axios from "axios";
 import { signInUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
-
-
-
+import { Container, TailwindThemeProvider } from 'tailwind-react-ui';
+import Hero from './components/ui-components/Hero'
+import Footer from './components/ui-components/Footer'
 
 class App extends Component {
 
@@ -76,10 +76,20 @@ class App extends Component {
   render() {
     return (
       <>
-        <AppHeader loginHandler={this.submitForm} message={this.state.headerMessage} />
-        <Container style={{ marginTop: '20px' }}>
-          <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} />
-        </Container>
+        <TailwindThemeProvider
+          theme={{
+            brandColors: {
+              primary: 'teal',
+            },
+          }}
+        >
+          <AppHeader loginHandler={this.submitForm} message={this.state.headerMessage}/>
+          <Hero />
+          <Container style={{marginTop: '20px'}}>
+            <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} />
+          </Container>
+          <Footer />
+        </TailwindThemeProvider>
       </>
     );
   }

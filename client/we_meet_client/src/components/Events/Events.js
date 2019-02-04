@@ -9,7 +9,7 @@ class Events extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { events: [],  credentials: {} };
+    this.state = { events: [], credentials: {} };
   }
 
   componentDidMount() {
@@ -58,8 +58,7 @@ class Events extends Component {
 
     return (
       <div>
-        {responseMessage}
-        <h3>Events List</h3>
+        <h3 style={{ marginBottom: "4rem" }}>Events List</h3>
         <ul>
           {events}
         </ul>
