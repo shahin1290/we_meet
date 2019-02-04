@@ -22,7 +22,7 @@ describe('<LoginControl />', () => {
     const profileLink = component.find('Profile');
     const logoutButton = component.find('Log out');
 
-    const loginButton = component.find('button.login-btn');
+    const loginButton = component.find('#login-btn');
     loginButton.simulate('click');
 
     expect(component.containsMatchingElement(startNewGroupLink));

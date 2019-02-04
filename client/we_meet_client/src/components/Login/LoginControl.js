@@ -27,7 +27,7 @@ class LoginControl extends Component {
       logoutButton = <OutlineButton onClick={this.handleLogoutClick} brand="primary" text-hocus="white" style={{marginLeft: '15px'}}>
         Log out</OutlineButton>;
     } else {
-      loginButton = <OutlineButton onClick={this.handleLoginClick} className="login-btn" brand="primary" text-hocus="white">
+      loginButton = <OutlineButton onClick={this.handleLoginClick} id="login-btn" brand="primary" text-hocus="white">
         Log in</OutlineButton>;
       registerButton = <OutlineButton brand="primary" text-hocus="white" style={{marginLeft: '10px'}}>
         Sign up</OutlineButton>

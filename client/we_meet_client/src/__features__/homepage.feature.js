@@ -11,19 +11,15 @@ describe('Homepage', () => {
     describe('navbar', () => {
 
         it('has a login button and a register button', async () => {
-            // await page.waitForSelector('.login-btn', {visible: true,})
-            // await page.waitForSelector('.register-btn', {visible: true,})
-            await expect(page).toMatch('Login');
-            await expect(page).toMatch('Register')
+            await expect(page).toMatch('Log in');
+            await expect(page).toMatch('Sign up')
         });
-
 
         it('renders different buttons when user logged in', async () => {
             await page.click('button[id=login-btn]')
-            // mock current user
-            await expect(page).toMatch('Start a group')
+            await expect(page).toMatch('Start a new group')
             await expect(page).toMatch('Profile')
-            await expect(page).toMatch('Logout');
+            await expect(page).toMatch('Log out');
         });
 
     })
