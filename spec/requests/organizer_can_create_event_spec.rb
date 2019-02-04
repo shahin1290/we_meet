@@ -11,7 +11,12 @@ describe 'POST /events' do
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     
     before do
-      post "/groups/#{group.id}/events", params: { event: {title: 'Craft Academy'} }, headers: headers
+      post "/groups/#{group.id}/events", params: { event: 
+                                                  {title: 'Craft Academy',
+                                                  description: 'Graduation Party',
+                                                  location: 'Stockholm',
+                                                  date_and_time: '09 Feb, 1pm',} }, headers: headers
+
     end
 
     it 'responds with success message' do

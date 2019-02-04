@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-  validates_presence_of :title
+  validates_presence_of :title, :description, :location, :date_and_time
   has_many :attendees, class_name: 'Rsvp'
   belongs_to :group
 
