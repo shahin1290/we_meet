@@ -1,16 +1,16 @@
-describe 'GET /notifications/send_email' do
+describe 'POST /groups/:group_id/notifications' do
   let!(:users) { create_list(:user, 3) }
   let!(:group) { create(:group) } 
   let!(:member1) { create(:membership, group: group, user: users[1]) } 
   let!(:member2) { create(:membership, group: group, user: users[2]) }
 
-  describe 'GET req with valid credentials' do
+  describe 'POST req with valid credentials' do
     let(:user_credentials) { users[0].create_new_auth_token }
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     let(:mail_delivery){ ActionMailer::Base.deliveries[0] }
     
     before do
-      get "/send_mail/#{group.id}", headers: headers
+      post "/groups/#{group.id}/notifications", headers: headers
     end
 
     it 'renders the receiver email' do
