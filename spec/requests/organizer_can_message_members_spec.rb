@@ -36,10 +36,3 @@ describe 'POST /groups/:group_id/notifications' do
 
   end
 end
-
-
-
-
-
-   
-
