@@ -10,7 +10,11 @@ describe 'POST /groups' do
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     
     before do
-      post "/groups", params: { group: {name: 'coding', category_id: category.id } }, headers: headers
+      post "/groups", params: { group: {name: 'coding', 
+                                        category_id: category.id,
+                                        location: "Stockholm",
+                                        description: "This is about coding",
+                                        organizer_id: user.id} }, headers: headers
     end
 
     it 'responds with success message' do

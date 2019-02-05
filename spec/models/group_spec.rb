@@ -3,15 +3,20 @@
 RSpec.describe Group, type: :model do
   describe 'DB table' do
     it { is_expected.to have_db_column :name }
+    it { is_expected.to have_db_column :description }
+    it { is_expected.to have_db_column :location }
   end
 
   describe 'Validations' do
     it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :description }
+    it { is_expected.to validate_presence_of :location }
   end
 
   describe 'Associations' do
     it { is_expected.to have_many :members }
     it { is_expected.to have_many :events }
+    it { is_expected.to belong_to :organizer }
   end
 
   describe 'Factory' do
