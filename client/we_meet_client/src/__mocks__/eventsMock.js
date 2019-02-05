@@ -9,8 +9,8 @@ beforeAll(async () => {
             },
             body: JSON.stringify({
                 events: [
-                    { id: 1, title: 'Test' },
-                    { id: 2, title: 'Test2' }
+                    { id: 1, title: 'Event 1' },
+                    { id: 2, title: 'Event 2' }
                 ]
             })
         }

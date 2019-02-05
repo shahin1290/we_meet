@@ -10,12 +10,12 @@ describe('WeMeet App', () => {
         await page.reload();
     });
 
-    it('should display "WeMeet" text on page', async () => {
-        await expect(page).toMatch('WeMeet');
+    it('should display WeMeet logo on page', async () => {
+        await expect(page).toMatchElement('#logo')
     });
 
     it("should list 2 events", async () => {
-        const liElementsCount = await page.$$eval('li', arr => arr.length);
-        await expect(liElementsCount).toEqual(4)
+        await expect(page).toMatch('Hackathon with Craft Academy');
+        await expect(page).toMatch('Amphibian workouts');
     })
 }); 
