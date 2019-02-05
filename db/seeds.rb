@@ -1,1 +1,0 @@
-Event.create(title: 'STHLM TECH Meetup', description: 'tech meeting', location: 'Stockholm', date: '2019-12-12', time: '19:00', group_id: 1 )
