@@ -10,7 +10,7 @@ class EventsCarousel extends Component {
       events: [
         {
           id: 1,
-          title: "Hackathon with Craft Academy",
+          title: "Hackathon at Craft Academy",
           image: "./assets/images/hackathon.jpg",
           avatar: "./assets/images/person.jpg",
           date: "2008-09-15T15:53:00",
@@ -89,6 +89,7 @@ class EventsCarousel extends Component {
               <img
                 src={event.image}
                 style={{ objectFit: "cover", height: "180px", width: "314px" }}
+                alt={`image_${event.id}`}
               />
             </div>
             <div
@@ -149,6 +150,7 @@ class EventsCarousel extends Component {
                 className="bottom-left"
                 src={event.avatar}
                 style={{ height: "40px", borderRadius: "80px" }}
+                alt={`image_${event.organizer}`}
               />
               <div
                 style={{
