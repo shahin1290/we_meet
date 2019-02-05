@@ -8,7 +8,7 @@ describe('Homepage', () => {
         await page.reload();
     });
 
-    describe('navbar', () => {
+    describe('displays correct buttons in navbar', () => {
 
         it('has a login button and a register button', async () => {
             await expect(page).toMatch('Log in');
@@ -24,8 +24,11 @@ describe('Homepage', () => {
 
     })
 
-    describe('footer', () => {
-
+    describe('displays a footer', () => {
+        
+        it('shows footer copyright info', async () => {
+            await expect(page).toMatch('Copyright 2019 © WeMeet');
+        })
     })
 
-}); 
+})
