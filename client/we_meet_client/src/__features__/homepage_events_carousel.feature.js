@@ -1,5 +1,3 @@
-require('../__mocks__/eventsMock')
-
 describe('Homepage body', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);
@@ -17,8 +15,8 @@ describe('Homepage body', () => {
         });
     
         it("with events listed", async () => {
-            await expect(page).toMatch('Event 1');
-            await expect(page).toMatch('Event 2');
+            await expect(page).toMatch('Hackathon with Craft Academy');
+            await expect(page).toMatch('Amphibian workouts');
         })
 
     })
