@@ -19,6 +19,7 @@ The live site can be viewed [here]().
 * Organizer can create an event
 * User can create a group
 * Organizer can set Category for group
+* Organizer can set additional event info
 
 
 ## Screenshots
