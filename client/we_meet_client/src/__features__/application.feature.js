@@ -1,4 +1,4 @@
-require('../__mocks__/eventsMock')
+// require('../__mocks__/eventsMock')
 
 describe('WeMeet App', () => {
     beforeAll(async () => {
