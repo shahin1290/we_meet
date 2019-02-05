@@ -72,94 +72,50 @@ class EventsCarousel extends Component {
       return (
         <Box key={event.id} inlineBlock >
           <Card
-            className="card"
+            className="card event-card"
             border
-            shadow
             maxW="sm"
-            style={{
-              width: "314px",
-              height: "300px",
-              marginRight: "15px",
-              marginBottom: "15px",
-              backgroundColor: "#F1F5F8",
-              textAlign: "Center"
-            }}
           >
             <div>
               <img
                 src={event.image}
-                style={{ objectFit: "cover", height: "180px", width: "314px" }}
+                className="card-image"
               />
             </div>
             <div
-              className="top-left"
-              style={{
-                borderRadius: "3px",
-                backgroundColor: "white",
-                width: "50px",
-                padding: "5px",
-                border: "0.5px solid rgba(46,62,72,.6)"
-              }}
+              className="top-left date-card"
             >
               <div
-                style={{
-                  fontSize: "20px",
-                  fontWeight: "500",
-                  lineHeight: "1.1",
-                  color: "#CC1F1A"
-                }}
+                className="date-card-day"
               >
                 {moment(event.date).format("DD")}
               </div>
-              <div style={{ fontWeight: "500", color: "rgba(46,62,72,.6)" }}>
+              <div 
+                className="date-card-month">
                 {moment(event.date).format("MMM")}
               </div>
             </div>
             <CardBody
-              style={{
-                textAlign: "left",
-                paddingBottom: "8px",
-                paddingTip: "8px"
-              }}
+              className="event-card-body"
             >
               <div
-                style={{
-                  color: "rgba(46,62,72,.6)",
-                  fontSize: "16px",
-                  fontWeight: "400",
-                  lineHeight: "16px",
-                  paddingBottom: "3px"
-                }}
+                className="date-line"
               >
                 {moment(event.date).format("dddd, MMMM DD, HH:mm")}
               </div>
               <div
-                style={{
-                  color: "#2e3e48",
-                  fontSize: "20px",
-                  fontWeight: "600",
-                  marginTop: "2px"
-                }}
+                className="title-line"
               >
                 {event.title}
               </div>
             </CardBody>
             <div style={{ height: "40px" }}>
               <img
-                className="bottom-left"
+                className="bottom-left event-card-avatar"
                 src={event.avatar}
-                style={{ height: "40px", borderRadius: "80px" }}
               />
               <div
-                style={{
-                  width: "80%",
-                  textAlign: "left",
-                  paddingLeft: "70px",
-                  lineHeight: "20px",
-                  fontSize: "14px",
-                  fontWeight: "400",
-                  color: "rgba(46,62,72,.6)"
-                }}
+                className="event-card-extra-info"
               >
                 <div>Hosted by {event.organizer}</div>
                 <div>
