@@ -15,7 +15,8 @@ describe 'POST /events' do
                                                   {title: 'Craft Academy',
                                                   description: 'Graduation Party',
                                                   location: 'Stockholm',
-                                                  date: '2019-12-12',} }, headers: headers
+                                                  date: '2019-12-12',
+                                                  time: '19:00',} }, headers: headers
     end
 
     it 'responds with success message' do
