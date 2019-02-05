@@ -13,7 +13,7 @@ class EventsCarousel extends Component {
           title: "Hackathon with Craft Academy",
           image: "./assets/images/hackathon.jpg",
           avatar: "./assets/images/person.jpg",
-          date: "Tuesday, February 20, 17:30",
+          date: "2008-09-15T15:53:00",
           organizer: "Tom Jones",
           group: "Craft Academy"
         },
@@ -22,25 +22,25 @@ class EventsCarousel extends Component {
           title: "Amphibian workouts",
           image: "./assets/images/fit_frogs.jpg",
           avatar: "./assets/images/person.jpg",
-          date: "Tuesday, February 22, 19:00",
+          date: "2008-09-15T15:53:00",
           organizer: "Lazy Bob",
-          group: "Get fit"
+          group: "Fitness trends"
         },
         {
           id: 3,
           title: "Kids game night",
           image: "./assets/images/kids_playing.jpg",
           avatar: "./assets/images/person.jpg",
-          date: "Saturday, February 20, 17:30",
-          organizer: "Steve O",
-          group: "Big Moma"
+          date: "2008-09-15T15:53:00",
+          organizer: "Gill Andersen",
+          group: "Family events"
         },
         {
           id: 4,
           title: "Wining & dining: Italian night",
           image: "./assets/images/dining.jpg",
           avatar: "./assets/images/person.jpg",
-          date: "Tuesday, February 22, 19:00",
+          date: "2008-09-15T15:53:00",
           organizer: "Bob Schnell",
           group: "Food excursions"
         },
@@ -49,7 +49,7 @@ class EventsCarousel extends Component {
           title: "Exotic vibes",
           image: "./assets/images/exotic_music.jpg",
           avatar: "./assets/images/person.jpg",
-          date: "Tuesday, February 22, 19:00",
+          date: "2008-09-15T15:53:00",
           organizer: "Jonas Gardell",
           group: "New music"
         },
@@ -58,7 +58,7 @@ class EventsCarousel extends Component {
           title: "Craft Academny graduation",
           image: "./assets/images/graduation.jpg",
           avatar: "./assets/images/person.jpg",
-          date: "Tuesday, February 22, 19:00",
+          date: "2008-09-15T15:53:00",
           organizer: "Tom Jones",
           group: "Craft Academy"
         }
@@ -70,10 +70,9 @@ class EventsCarousel extends Component {
     let events = this.state.events;
     let eventsList = events.map(event => {
       return (
-        <Box inlineBlock>
+        <Box key={event.id} inlineBlock >
           <Card
             className="card"
-            key={event.id}
             border
             shadow
             maxW="sm"

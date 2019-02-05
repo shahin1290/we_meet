@@ -6,14 +6,10 @@ describe('<LoginControl />', () => {
 
   it('shows login and register buttons', () => {
     const component = shallow(<LoginControl />);
-    // const loginButton = <button>Login</button>;
-    // const registerButton = <button>Register</button>;
     const loginButton = component.find('Log in');
     const registerButton = component.find('Sign up');
     expect(component.containsMatchingElement(loginButton));
     expect(component.containsMatchingElement(registerButton));
-    // expect(component.contains(loginButton)).toEqual(true);
-    // expect(component.contains(registerButton)).toEqual(true);
   });
 
   it('replaces login and register with start new group, profile, and logout buttons when logged in', () => {
