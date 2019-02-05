@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 2019_02_03_142633) do
     t.datetime "updated_at", null: false
     t.bigint "group_id"
     t.date "date"
-    t.integer "organizer"
     t.index ["group_id"], name: "index_events_on_group_id"
   end
 

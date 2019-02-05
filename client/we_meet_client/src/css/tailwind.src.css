@@ -2,3 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind screens;
+
+.modal_close {
+	background: transparent !important;
+	cursor: pointer;
+	font-family: arial;
+	position: absolute;
+	top: 3px;
+	right: 3px;
+	font-size: 18px;
+	line-height: 30px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+}
+
+
