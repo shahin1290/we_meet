@@ -14,25 +14,27 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      containerMessage: '',
-      email: 'rand@random.com',
-      password: 'password'
+      containerMessage: ''
     };
     this.authorizeUser = this.authorizeUser.bind(this)
     this.unauthorizeUser = this.unauthorizeUser.bind(this)
     this.rsvp = this.rsvp.bind(this)
   }
 
-
   authorizeUser(e) {
     e.preventDefault()
     const { signInUser } = this.props
-    const {
-      email,
-      password,
-    } = this.state
-    signInUser({ email, password })
+    let credentials = {
+      email: e.target[0].value,
+      password: e.target[1].value
+    }
+
+    // This is hacky as hell!
+    // e.target.parentElement.parentElement.parentElement.removeChild(e.target.parentElement.parentElement)
+    document.getElementById('overlay').style.display = 'none'
+    signInUser(credentials)
       .then(() => {
+
         // Let's add this flash at some point
         this.setState({ headerMessage: `You are logged in` })
       })

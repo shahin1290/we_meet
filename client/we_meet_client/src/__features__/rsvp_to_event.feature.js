@@ -1,4 +1,4 @@
-// require('../__mocks__/eventsMock')
+require('../__mocks__/eventsMock')
 
 describe('visitor can RSVP to event', () => {
   beforeAll(async () => {
@@ -11,7 +11,6 @@ describe('visitor can RSVP to event', () => {
     it("renders a message 'You need to sign in or sign up before continuing.'", async () => {
       await page.click('button[id=attend-event-1]')
       await expect(page).toMatch('You need to sign in or sign up before continuing.')
-      // await jestPuppeteer.debug()
     })
 
     xit('returns visitor to event upon successful sign up', async () => {
@@ -23,8 +22,7 @@ describe('visitor can RSVP to event', () => {
   describe('when user logged in', () => {
 
     it('displays updated attendee list upon rsvp', async () => {
-      // click the login
-      // click this one twice
+
       await page.click('button[id=attend-event-1]')
       await expect(page).toMatch('Your RSVP was successfylly processed')
     })
