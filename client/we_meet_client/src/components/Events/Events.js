@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import Auth from '../../services/Auth'
 import { connect } from 'react-redux';
+
 
 
 import { ErrorText, FillButton, List, Text } from 'tailwind-react-ui';
 
 const mapStateToProps = (state) => {
-  debugger
   return {
     currentUser: { email: state.reduxTokenAuth.currentUser.attributes.email }
   }
@@ -24,21 +23,11 @@ class Events extends Component {
     this.getEvents()
   }
 
-  componentWillMount() {
-    this.setState({ credentials: this.getCredentials() })
-  }
-
   async getEvents() {
     const response = await axios.get("http://localhost:3000/events")
     const events = response.data.events
     this.setState({ events });
   }
-
-  async getCredentials() {
-    let credentials = await Auth.getUser()
-    return credentials
-  }
-
 
   render() {
     let responseMessage
@@ -55,7 +44,7 @@ class Events extends Component {
               brand='secondary'
               small
               id={`attend-event-${event.id}`}
-              onClick={this.props.rsvpHandler}
+              onClick={this.props.rsvpHandler.bind(this, event.id)}
             >
               RSVP
             </FillButton>

@@ -3,8 +3,13 @@ import { generateAuthActions } from 'redux-token-auth'
 const config = {
   authUrl: 'http://localhost:3000/auth',
   userAttributes: {
-    email: 'email',
+    
+    // email: 'email',
     // imageUrl: 'image',
+    'access-token': 'access-token',
+    client: 'client',
+    expiry: 'expiry',
+    uid: 'uid'
   },
   userRegistrationAttributes: {
     firstName: 'first_name',
