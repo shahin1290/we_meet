@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import {
   Header,
   NavToggle,
-  NavMenu,
+  NavMenu
 } from 'tailwind-react-ui';
 
 import LoginControl from '../Login/LoginControl';
 
+class AppHeader extends Component {
+  render() {
 
-const AppHeader = () => {
-  return (
-    <Header bg="white" text="white" screen="md">
+    return (
+      <Header bg="white" text="white" screen="md">
       <img src='./assets/images/wemeet_logo.png' id="logo" alt="logo" />
-      <NavToggle />
-      <NavMenu>
-        <LoginControl />
-      </NavMenu>
-    </Header>
-  )
+        <NavToggle />
+        <NavMenu>
+          <LoginControl signUpHandler={this.props.signUpHandler} loginHandler={this.props.loginHandler} logoutHandler={this.props.logoutHandler}/>
+        </NavMenu>
+      </Header>
+    )
+  }
+
 }
 
 export default AppHeader
