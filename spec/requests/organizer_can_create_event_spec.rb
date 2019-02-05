@@ -15,11 +15,11 @@ describe 'POST /events' do
                                                   {title: 'Craft Academy',
                                                   description: 'Graduation Party',
                                                   location: 'Stockholm',
-                                                  date_and_time: '09 Feb, 1pm',} }, headers: headers
-
+                                                  date: '2019-12-12',} }, headers: headers
     end
 
     it 'responds with success message' do
+      #binding.pry
       expect(response_json['message']).to eq 'You have successfully created an event'
     end
 
