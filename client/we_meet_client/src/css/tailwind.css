@@ -29689,7 +29689,7 @@ table {
 }
 
 .event-card {
-  width: 314px;
+  width: 90%;
   height: 300px;
   margin-right: 15px;
   margin-bottom: 15px;
@@ -29700,7 +29700,7 @@ table {
 .event-card .card-image {
   object-fit: cover;
   height: 180px;
-  width: 314px;
+  width: 100%;
 }
 
 .event-card .date-card {
@@ -29753,7 +29753,7 @@ table {
   border-radius: 80px;
 }
 
-.event-card  .event-card-extra-info {
+.event-card .event-card-extra-info {
   width: 80%;
   text-align: left;
   padding-left: 70px;

@@ -20,7 +20,7 @@
   }
 
 .event-card {
-  width: 314px;
+  width: 90%;
   height: 300px;
   margin-right: 15px;
   margin-bottom: 15px;
@@ -31,7 +31,7 @@
 .event-card .card-image {
   object-fit: cover;
   height: 180px;
-  width: 314px;
+  width: 100%;
 }
 
 .event-card .date-card {

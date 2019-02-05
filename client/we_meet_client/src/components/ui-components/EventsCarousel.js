@@ -10,7 +10,7 @@ class EventsCarousel extends Component {
       events: [
         {
           id: 1,
-          title: "Hackathon at Craft Academy",
+          title: "Hackathon at Craft Academy Labs",
           image: "./assets/images/hackathon.jpg",
           avatar: "./assets/images/person.jpg",
           date: "2008-09-15T15:53:00",
@@ -157,7 +157,7 @@ class EventsCarousel extends Component {
         >
           Events near you
         </h1>
-        <Carousel renderBottomCenterControls="null" slidesToShow="3">
+        <Carousel renderBottomCenterControls="null" slidesToShow="3" style={{width:"100%"}}>
           {eventsList}
         </Carousel>
       </div>
