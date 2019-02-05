@@ -17,7 +17,7 @@ class AppHeader extends Component {
         <img src={logo} alt="logo" />
         <NavToggle />
         <NavMenu>
-          <LoginControl loginHandler={this.props.loginHandler} logoutHandler={this.props.logoutHandler}/>
+          <LoginControl signUpHandler={this.props.signUpHandler} loginHandler={this.props.loginHandler} logoutHandler={this.props.logoutHandler}/>
         </NavMenu>
       </Header>
     )

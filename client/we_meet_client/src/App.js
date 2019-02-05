@@ -4,7 +4,7 @@ import './css/tailwind.css';
 import Events from './components/Events/Events';
 import AppHeader from './components/ui-components/AppHeader'
 import axios from "axios";
-import { signInUser, signOutUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
+import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
 import { Container, TailwindThemeProvider } from 'tailwind-react-ui';
 import Hero from './components/ui-components/Hero'
 import Footer from './components/ui-components/Footer'
@@ -18,6 +18,7 @@ class App extends Component {
     };
     this.authorizeUser = this.authorizeUser.bind(this)
     this.unauthorizeUser = this.unauthorizeUser.bind(this)
+    this.registerUser = this.registerUser.bind(this)
     this.rsvp = this.rsvp.bind(this)
   }
 
@@ -57,6 +58,25 @@ class App extends Component {
       })
   }
 
+  registerUser(e) {
+    e.preventDefault()
+    const { registerUser } = this.props
+    let credentials = {
+      email: e.target[0].value,
+      password: e.target[1].value,
+      password_confirmation: e.target[3].value
+    }
+    registerUser(credentials)
+      .then(() => {
+        // Let's flash the user something
+        document.getElementById('overlay').style.display = 'none'
+
+      })
+      .catch(() => {
+
+      })
+  }
+
   async rsvp(id) {
     const credentials = { 'access-token': localStorage.getItem('access-token'), 'token-type': localStorage.getItem('token-type'), 'client': localStorage.getItem('client'), 'expiry': localStorage.getItem('expiry'), 'uid': localStorage.getItem('uid'), }
     try {
@@ -78,7 +98,7 @@ class App extends Component {
             },
           }}
         >
-          <AppHeader loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
+          <AppHeader signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
           <Hero />
           <Container style={{ marginTop: '20px' }}>
             <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} />
@@ -92,5 +112,5 @@ class App extends Component {
 
 export default connect(
   null,
-  { signInUser, signOutUser },
+  { signInUser, signOutUser, registerUser },
 )(App)

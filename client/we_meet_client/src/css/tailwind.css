@@ -29678,11 +29678,8 @@ table {
 
 .modal_close {
   background: transparent !important;
-  /* border: 3px solid #999; *//* border-radius: 50px; */
   cursor: pointer;
-  /* display: inline-block; */
   font-family: arial;
-  /* font-weight: bold; */
   position: absolute;
   top: 3px;
   right: 3px;

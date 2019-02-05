@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { LinkButton, OutlineButton } from 'tailwind-react-ui';
 import { connect } from 'react-redux';
 import LoginForm from './LoginForm'
+import SignUpForm from './SignUpForm'
 
+// signUpHandler
 
 const mapStateToProps = (state) => {
   return {
@@ -13,10 +15,12 @@ class LoginControl extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayLoginForm: false
+      displayLoginForm: false,
+      displaySignUpForm: false
     }
-    this.handleLoginClick = this.props.loginHandler.bind(this);
-    this.handleLogoutClick = this.props.logoutHandler.bind(this)
+    this.loginHandler = this.props.loginHandler.bind(this);
+    this.handleLogoutClick = this.props.logoutHandler.bind(this);
+    this.signUpHandler = this.props.signUpHandler.bind(this)
   }
 
   displayLoginForm() {
@@ -27,9 +31,27 @@ class LoginControl extends Component {
     this.setState({displayLoginForm: false})
   }
 
+  displaySignUpForm() {
+    this.setState({displaySignUpForm: true})
+  }
+
+  hideSignUpForm() {
+    this.setState({displaySignUpForm: false})
+  }
+
+  handleLoginClick(e) {
+    this.setState({displayLoginForm: false})
+    this.loginHandler(e);
+  }
+
+  handleSignUpClick(e) {
+    this.setState({displaySignUpForm: false})
+    this.signUpHandler(e);
+  }
+
   render() {
     const isSignedIn = this.props.isSignedIn;
-    let startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm
+    let startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm
     if (isSignedIn) {
       startNewGroupLink = <LinkButton text="grey-darkest" text-hocus="teal" style={{ textDecoration: 'none' }}>Start a new group</LinkButton>
       profileLink = <LinkButton text="grey-darkest" text-hocus="teal" style={{ marginLeft: '13px', textDecoration: 'none' }}>Profile</LinkButton>
@@ -38,8 +60,19 @@ class LoginControl extends Component {
     } else {
       loginButton = <OutlineButton onClick={this.displayLoginForm.bind(this)} id="login-btn" brand="primary" text-hocus="white">
         Log in</OutlineButton>;
-      registerButton = <OutlineButton brand="primary" text-hocus="white" style={{ marginLeft: '10px' }}>
+      registerButton = <OutlineButton onClick={this.displaySignUpForm.bind(this)} brand="primary" text-hocus="white" style={{ marginLeft: '10px' }}>
         Sign up</OutlineButton>
+    }
+
+    if (this.state.displaySignUpForm) {
+      let overlay = document.getElementById('overlay')
+      let form = document.getElementById('signup-form')
+      if (overlay && form) {
+        overlay.style.display = ''
+        form.reset()
+      }
+      signUpForm = <SignUpForm signUpHandler={this.handleSignUpClick.bind(this)} hideFormHandler={this.hideSignUpForm.bind(this)}/ >
+  
     }
 
     if (this.state.displayLoginForm) {
@@ -59,6 +92,7 @@ class LoginControl extends Component {
         {loginButton}
         {registerButton}
         {loginForm}
+        {signUpForm}
       </>
     );
   }
