@@ -84,7 +84,7 @@
   border-radius: 80px;
 }
 
-.event-card  .event-card-extra-info {
+.event-card .event-card-extra-info {
   width: 80%;
   text-align: left;
   padding-left: 70px;
@@ -93,6 +93,7 @@
   font-weight: 400;
   color: rgba(46,62,72,.6)
 }
+
 .modal_close {
 	background: transparent !important;
 	cursor: pointer;
