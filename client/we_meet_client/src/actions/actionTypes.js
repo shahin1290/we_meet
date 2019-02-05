@@ -1,0 +1,2 @@
+export const FETCH_USER_DATA = 'FETCH_USER_DATA';
+export const RECEIVE_USER_DATA = 'RECEIVE_USER_DATA';

@@ -1,4 +1,4 @@
-require('../__mocks__/eventsMock')
+// require('../__mocks__/eventsMock')
 
 describe('WeMeet App', () => {
     beforeAll(async () => {
@@ -16,6 +16,6 @@ describe('WeMeet App', () => {
 
     it("should list 2 events", async () => {
         const liElementsCount = await page.$$eval('li', arr => arr.length);
-        await expect(liElementsCount).toEqual(2)
+        await expect(liElementsCount).toEqual(4)
     })
 }); 
