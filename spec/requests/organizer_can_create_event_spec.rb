@@ -2,10 +2,6 @@ describe 'POST /events' do
   let(:user) { create(:user) }
   let!(:group) { create(:group) } 
 
-  let!(:events) do 
-    3.times { create(:event, group: group) }
-  end
-
   describe 'POST req with valid credentials' do
     let(:user_credentials) { user.create_new_auth_token }
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
@@ -16,17 +12,18 @@ describe 'POST /events' do
                                                   description: 'Graduation Party',
                                                   location: 'Stockholm',
                                                   date: '2019-12-12',
-                                                  time: '19:00',} }, headers: headers
+                                                  time: '2000-01-01T12:12:12.000Z'
+                                                  } }, headers: headers
     end
 
     it 'responds with success message' do
-      #binding.pry
       expect(response_json['message']).to eq 'You have successfully created an event'
     end
 
     it 'responds with status 200' do
       expect(response).to have_http_status 200
     end
+
   end
 
   describe 'POST req with no event title' do
@@ -40,6 +37,5 @@ describe 'POST /events' do
     it 'responds with error message' do
       expect(response_json['error']).to include "Title can't be blank"
     end
-
   end
 end
