@@ -1,10 +1,10 @@
 describe 'POST /groups/:group_id/notifications' do
-  let!(:users) { create_list(:user, 3) }
-  let!(:group) { create(:group) } 
+  let!(:users) { create_list(:user, 4) }
+  let!(:group) { create(:group, organizer: users[0]) } 
   let!(:member1) { create(:membership, group: group, user: users[1]) } 
   let!(:member2) { create(:membership, group: group, user: users[2]) }
 
-  describe 'POST req with valid credentials' do
+  describe 'POST req when user is the organizer' do
     let(:user_credentials) { users[0].create_new_auth_token }
     let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
     let(:mail_delivery){ ActionMailer::Base.deliveries[0] }
@@ -13,13 +13,13 @@ describe 'POST /groups/:group_id/notifications' do
       post "/groups/#{group.id}/notifications", headers: headers
     end
 
-    it 'sents the email only to the specific group members' do
+    it 'sends the email only to the specific group members' do
       expect(mail_delivery.to).to include(users[1].email)
       expect(mail_delivery.to).not_to include(users[0].email)
     end
 
     it 'shows the email address of the sender' do
-      expect(mail_delivery.from).to include('noreply@meetup.com')
+      expect(mail_delivery.from).to include('noreply@wemeet.com')
     end
 
     it 'responds with success message' do
@@ -34,5 +34,23 @@ describe 'POST /groups/:group_id/notifications' do
       expect(mail_delivery.body).to include('Thanks for joining the group')
     end
 
+  end
+  
+  describe 'POST req when user is not the organizer' do
+    let(:user_credentials) { users[3].create_new_auth_token }
+    let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(user_credentials) }
+    let(:mail_delivery){ ActionMailer::Base.deliveries[0] }
+    
+    before do
+      post "/groups/#{group.id}/notifications", headers: headers
+    end
+
+    it 'responds with error message' do
+      expect(response_json['error']).to eq 'You must be an organizer to send an email'
+    end
+
+    it 'returns 403' do
+      expect(response).to have_http_status(403)
+    end
   end
 end
