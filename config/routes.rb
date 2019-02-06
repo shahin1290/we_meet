@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show] 
 
   resources :groups, only: [:index, :show, :create] do
+    resources :notifications, only: [:create]
     resources :memberships, only: [:create]
     resources :events, only: [:index, :create]
   end
