@@ -1,3 +1,6 @@
+require('../__mocks__/mocks')
+
+
 describe('Homepage', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);
@@ -16,7 +19,10 @@ describe('Homepage', () => {
         });
 
         it('renders different buttons when user logged in', async () => {
-            await page.click('button[id=login-btn]')
+            await page.click('button[id="login-btn"]')
+            await page.type('input[name="email"]', 'rand@random.com');
+            await page.type('input[name="password"]', 'password');
+            await page.click('input[value="Login"]')
             await expect(page).toMatch('Start a new group')
             await expect(page).toMatch('Profile')
             await expect(page).toMatch('Log out');
@@ -25,7 +31,7 @@ describe('Homepage', () => {
     })
 
     describe('displays a footer', () => {
-        
+
         it('shows footer copyright info', async () => {
             await expect(page).toMatch('Copyright 2019 © WeMeet');
         })
