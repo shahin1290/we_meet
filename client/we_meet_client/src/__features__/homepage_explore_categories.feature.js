@@ -20,6 +20,11 @@ describe('Homepage body', () => {
             await expect(page).toMatch('Tech');
             await expect(page).toMatch('Food & Drink');
         });
+
+        it("displays 6 category cards", async () => {
+            let cardCount = await page.$$('.category-card')
+            await expect(cardCount.length).toEqual(6)
+        })
     })
 
 }); 

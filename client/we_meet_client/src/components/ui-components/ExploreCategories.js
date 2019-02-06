@@ -1,43 +1,24 @@
 import React, { Component } from "react";
 import { Card, Box } from "tailwind-react-ui";
+import axios from "axios";
+
 
 class ExploreCategories extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      categories: [
-        {
-          id: 1,
-          name: "Tech",
-          image: "./assets/images/tech.png"
-        },
-        {
-          id: 2,
-          name: "Food & Drink",
-          image: "./assets/images/food.png"
-        },
-        {
-          id: 3,
-          name: "Sports & Fitness",
-          image: "./assets/images/fitness.png"
-        },
-        {
-          id: 4,
-          name: "Family",
-          image: "./assets/images/family.png"
-        },
-        {
-          id: 5,
-          name: "Music",
-          image: "./assets/images/music.png"
-        },
-        {
-          id: 6,
-          name: "Outdoors & Adventure",
-          image: "./assets/images/outdoors.png"
-        }
-      ]
+      categories: []
     };
+  }
+
+  componentDidMount() {
+    this.getCategories();
+  }
+
+  async getCategories() {
+    const response = await axios.get("http://localhost:3000/categories")
+    const categories = response.data.categories
+    this.setState({ categories });
   }
 
   render() {
@@ -53,7 +34,7 @@ class ExploreCategories extends Component {
             maxW="sm"
           >
             <div>
-              <img src={category.image} />
+              <img src={category.image || `./assets/images/${category.name.toLowerCase()}.png`} />
             </div>
           </Card>
           <div className="category-name">{category.name}</div>
