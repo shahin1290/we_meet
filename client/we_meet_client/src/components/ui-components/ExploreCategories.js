@@ -46,52 +46,24 @@ class ExploreCategories extends Component {
       return (
         <Box inlineBlock>
           <Card
-            className="card"
+            className="card category-card"
             key={category.id}
             border
             shadow
             maxW="sm"
-            style={{
-              width: "314px",
-              height: "200px",
-              marginRight: "15px",
-              marginBottom: "15px",
-              backgroundColor: "#F1F5F8",
-              textAlign: "Center"
-            }}
           >
             <div>
               <img src={category.image} />
             </div>
           </Card>
-          <div
-            style={{
-              fontSize: "16px",
-              fontWeight: "600",
-              color: "#2e3e48",
-              marginBottom: "1rem"
-            }}
-          >
-            {category.name}
-          </div>
+          <div className="category-name">{category.name}</div>
         </Box>
       );
     });
 
     return (
-      <div
-        style={{ margin: "50px", paddingLeft: "8rem", paddingRight: "4rem" }}
-      >
-        <h1
-          style={{
-            fontSize: "24px",
-            fontWeight: "600",
-            color: "#2e3e48",
-            marginBottom: "1rem"
-          }}
-        >
-          Explore categories
-        </h1>
+      <div className="category-container">
+        <h1 className="category-header">Explore categories</h1>
         {categoriesList}
       </div>
     );

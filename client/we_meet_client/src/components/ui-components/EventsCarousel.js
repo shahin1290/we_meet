@@ -32,7 +32,7 @@ class EventsCarousel extends Component {
           image: "./assets/images/kids_playing.jpg",
           avatar: "./assets/images/person.jpg",
           date: "2008-09-15T15:53:00",
-          organizer: "Gill Andersen",
+          organizer: "Petra N.",
           group: "Family events"
         },
         {
@@ -70,12 +70,8 @@ class EventsCarousel extends Component {
     let events = this.state.events;
     let eventsList = events.map(event => {
       return (
-        <Box key={event.id} inlineBlock >
-          <Card
-            className="card event-card"
-            border
-            maxW="sm"
-          >
+        <Box key={event.id} inlineBlock>
+          <Card className="card event-card" border maxW="sm">
             <div>
               <img
                 src={event.image}
@@ -83,32 +79,19 @@ class EventsCarousel extends Component {
                 alt={`image_${event.id}`}
               />
             </div>
-            <div
-              className="top-left date-card"
-            >
-              <div
-                className="date-card-day"
-              >
+            <div className="top-left date-card">
+              <div className="date-card-day">
                 {moment(event.date).format("DD")}
               </div>
-              <div 
-                className="date-card-month">
+              <div className="date-card-month">
                 {moment(event.date).format("MMM")}
               </div>
             </div>
-            <CardBody
-              className="event-card-body"
-            >
-              <div
-                className="date-line"
-              >
+            <CardBody className="event-card-body">
+              <div className="date-line">
                 {moment(event.date).format("dddd, MMMM DD, HH:mm")}
               </div>
-              <div
-                className="title-line"
-              >
-                {event.title}
-              </div>
+              <div className="title-line">{event.title}</div>
             </CardBody>
             <div style={{ height: "40px" }}>
               <img
@@ -116,9 +99,7 @@ class EventsCarousel extends Component {
                 src={event.avatar}
                 alt={`image_${event.organizer}`}
               />
-              <div
-                className="event-card-extra-info"
-              >
+              <div className="event-card-extra-info">
                 <div>Hosted by {event.organizer}</div>
                 <div>
                   From{" "}
@@ -157,7 +138,11 @@ class EventsCarousel extends Component {
         >
           Events near you
         </h1>
-        <Carousel renderBottomCenterControls="null" slidesToShow="3" style={{width:"100%"}}>
+        <Carousel
+          renderBottomCenterControls="null"
+          slidesToShow="3"
+          style={{ width: "100%" }}
+        >
           {eventsList}
         </Carousel>
       </div>
