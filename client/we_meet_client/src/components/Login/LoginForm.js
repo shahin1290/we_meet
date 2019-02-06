@@ -15,14 +15,14 @@ const LoginForm = (props) => {
               <label className="block uppercase tracking-wide text-grey-darker text-xs mb-2">
                 Email
           </label>
-              <input type="text" className="appearance-none block w-full bg-grey-lighter text-grey-darker rounded py-3 px-4 mb-3 leading-tight">
+              <input type="text" name="email" className="appearance-none block w-full bg-grey-lighter text-grey-darker rounded py-3 px-4 mb-3 leading-tight">
               </input>
             </div>
             <div className='w-full px-3 mb-6 md:mb-0'>
               <label className="block uppercase tracking-wide text-grey-darker text-xs mb-2">
                 Password
           </label>
-              <input type="password" className="appearance-none block w-full bg-grey-lighter text-grey-darker rounded py-3 px-4 mb-3 leading-tight">
+              <input type="password" name="password" className="appearance-none block w-full bg-grey-lighter text-grey-darker rounded py-3 px-4 mb-3 leading-tight">
               </input>
             </div>
 
