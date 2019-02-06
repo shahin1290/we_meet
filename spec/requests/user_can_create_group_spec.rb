@@ -42,6 +42,7 @@ describe 'POST /groups' do
     it 'assigns group to the right category' do
       expect(@last_group.category).to eq category
     end
+   
   end
 
   describe 'POST req with no group name' do
