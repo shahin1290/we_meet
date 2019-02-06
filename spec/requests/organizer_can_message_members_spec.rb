@@ -23,7 +23,7 @@ describe 'POST /groups/:group_id/notifications' do
     end
 
     it 'responds with success message' do
-      expect(response_json['message']).to eq 'Notifications sent successfully'
+      expect(response_json['message']).to eq 'Notifications was successfully sent to 2 group members'
     end
 
     it 'renders the subject' do

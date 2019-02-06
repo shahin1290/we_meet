@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
 
     if current_user == group.organizer
       UserMailer.welcome_email(group).deliver
-      render json: { message: 'Notifications sent successfully' }
+      render json: { message: "Notifications was successfully sent to #{group.members.count} group members" }
     else 
       render json: { error: 'You must be an organizer to send an email' }, status: 403
     end
