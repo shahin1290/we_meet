@@ -10,7 +10,7 @@ class EventsCarousel extends Component {
       events: [
         {
           id: 1,
-          title: "Hackathon at Craft Academy Labs",
+          title: "Hackathon at Craft Academy",
           image: "./assets/images/hackathon.jpg",
           avatar: "./assets/images/person.jpg",
           date: "2008-09-15T15:53:00",
