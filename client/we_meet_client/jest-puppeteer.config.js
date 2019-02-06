@@ -8,7 +8,8 @@ module.exports = {
             '--no-sandbox',
             '--ignore-certificate-errors',
             "--disable-popup-blocking",
-            "--disable-infobars"]
+            "--disable-infobars",
+            '--disable-web-security']
 
     },
     browserContext: 'default',

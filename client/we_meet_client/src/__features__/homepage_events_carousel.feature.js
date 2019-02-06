@@ -1,3 +1,6 @@
+require('../__mocks__/mocks')
+require('../__mocks__/mocks')
+
 describe('Homepage body', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);

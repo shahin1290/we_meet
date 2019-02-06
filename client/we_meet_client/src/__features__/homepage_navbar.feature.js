@@ -1,3 +1,6 @@
+require('../__mocks__/mocks')
+
+
 describe('Homepage', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);
@@ -28,7 +31,7 @@ describe('Homepage', () => {
     })
 
     describe('displays a footer', () => {
-        
+
         it('shows footer copyright info', async () => {
             await expect(page).toMatch('Copyright 2019 © WeMeet');
         })
