@@ -3,6 +3,8 @@ class User < ApplicationRecord
   def tokens_has_json_column_type?
     false
   end
+  serialize :token, Hash
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

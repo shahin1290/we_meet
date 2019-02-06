@@ -10,19 +10,14 @@ describe 'GET /categories/:id' do
   end
 
   before do
-    get "/categories", headers: headers
-  end
-
-  it 'lists groups belonging to the categories' do
-    ids_list = category_1.groups.map(&:category_id)
-    expect(ids_list).not_to include category_2.id
+    get "/categories/#{category_1.id}", headers: headers
   end
 
   it 'returns 200' do
     expect(response).to have_http_status(200)
   end
 
-  it 'returns 2 categories' do
-    expect(response_json.count).to eq 2
+  it 'returns 3 groups' do
+    expect(response_json['category']['groups'].count).to eq 3
   end
 end
