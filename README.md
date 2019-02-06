@@ -5,7 +5,6 @@
 
 [![Coverage Status](https://coveralls.io/repos/github/CraftAcademy/we_meet/badge.svg?branch=development)](https://coveralls.io/github/CraftAcademy/we_meet?branch=development)
 
-
 ---
 WeMeet is an API-only app that helps people to organize groups and events around similar interests and topics. Users can find and attend events, create their own groups, set up group events, and connect with members.
 
@@ -20,9 +19,7 @@ The live site can be viewed [here]().
 * User can create a group
 * Organizer can set Category for group
 
-
 ## Screenshots
-
 
 ## Tech stack
 * Ruby on Rails
@@ -37,7 +34,6 @@ $ npm run tests:specs
 ```
 
 We are writing acceptance tests (e2e) using Jest and Puppeteer
-
 
 ```
 $ npm run tests:features
