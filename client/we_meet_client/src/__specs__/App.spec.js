@@ -4,9 +4,9 @@ import { shallow } from 'enzyme';
 import App from '../App';
 
 describe('<App />', () => {
-  it('renders welcome text', () => {
+  it('renders WeMeet logo', () => {
     const component = shallow(<App />);
-    const header = <h1>WeMeet</h1>;
-    expect(component.contains(header)).toEqual(true);
+    const logo = component.find('#logo');
+    expect(component.containsMatchingElement(logo));
   });
 })
