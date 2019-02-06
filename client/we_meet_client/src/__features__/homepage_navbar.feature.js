@@ -1,6 +1,5 @@
 require('../__mocks__/mocks')
 
-
 describe('Homepage', () => {
     beforeAll(async () => {
         jest.setTimeout(10000);

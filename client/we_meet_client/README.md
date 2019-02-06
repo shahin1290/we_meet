@@ -6,7 +6,10 @@ WeMeet is an app that helps people to organize groups and events around similar 
 The live site can be viewed [here]().
 
 ## Features included:
-* User can ....
+* Visitors can sign up for an account and log in / log out
+* Users can RSVP to events
+* Visitors can view an events carousel on the home page
+* Visitors can view an categories table on the home page
 
 ## Screenshots
 

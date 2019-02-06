@@ -9,6 +9,7 @@ import Hero from './components/ui-components/Hero'
 import Footer from './components/ui-components/Footer'
 import EventsCarousel from './components/ui-components/EventsCarousel';
 import Events from './components/Events/Events';
+import ExploreCategories from './components/ui-components/ExploreCategories';
 
 class App extends Component {
 
@@ -102,9 +103,9 @@ class App extends Component {
           <AppHeader signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
           <Hero />
           <EventsCarousel />
-          <Container style={{ marginTop: '20px' }}>
-            <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} />
-          </Container>
+          <ExploreCategories />
+            {/* Leave the below in until we decide what to do with it */}
+            {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
           <Footer />
         </TailwindThemeProvider>
       </>
