@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 2019_02_04_200935) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category_id"
+    t.text "description"
+    t.string "location"
+    t.integer "organizer_id"
   end
 
   create_table "memberships", force: :cascade do |t|
