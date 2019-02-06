@@ -7,7 +7,7 @@ import {
 
 import LoginControl from '../Login/LoginControl';
 
-class AppHeader extends Component {
+class NavBar extends Component {
   render() {
 
     return (
@@ -23,4 +23,4 @@ class AppHeader extends Component {
 
 }
 
-export default AppHeader
+export default NavBar
