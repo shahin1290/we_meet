@@ -16,6 +16,7 @@ describe 'POST /groups' do
                                         description: "This is about coding",
                                         organizer_id: user.id
                                         } }, headers: headers
+      @last_group = Group.last
     end
 
     it 'responds with success message' do
@@ -24,6 +25,22 @@ describe 'POST /groups' do
 
     it 'responds with status 200' do
       expect(response).to have_http_status 200
+    end
+
+    it 'stores the name' do
+      expect(@last_group.name).to eq 'coding'
+    end
+  
+    it 'stores the description' do
+      expect(@last_group.description).to eq 'This is about coding'
+    end
+
+    it 'stores the location' do
+      expect(@last_group.location).to eq 'Stockholm'
+    end
+  
+    it 'assigns group to the right category' do
+      expect(@last_group.category).to eq category
     end
   end
 
