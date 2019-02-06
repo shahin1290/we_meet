@@ -1,4 +1,4 @@
-require('../__mocks__/eventsMock')
+require('../__mocks__/mocks')
 
 describe('visitor can RSVP to event', () => {
   beforeAll(async () => {
@@ -8,7 +8,7 @@ describe('visitor can RSVP to event', () => {
   
   describe('when anonymous visitor', () => {
     
-    it("renders a message 'You need to sign in or sign up before continuing.'", async () => {
+    xit("renders a message 'You need to sign in or sign up before continuing.'", async () => {
       await page.click('button[id=attend-event-1]')
       await expect(page).toMatch('You need to sign in or sign up before continuing.')
     })
@@ -21,7 +21,7 @@ describe('visitor can RSVP to event', () => {
 
   describe('when user logged in', () => {
 
-    it('displays updated attendee list upon rsvp', async () => {
+    xit('displays updated attendee list upon rsvp', async () => {
 
       await page.click('button[id=attend-event-1]')
       await expect(page).toMatch('Your RSVP was successfylly processed')

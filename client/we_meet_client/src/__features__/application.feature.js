@@ -1,4 +1,4 @@
-// require('../__mocks__/eventsMock')
+require('../__mocks__/mocks')
 
 describe('WeMeet App', () => {
     beforeAll(async () => {
@@ -15,7 +15,7 @@ describe('WeMeet App', () => {
     });
 
     it("should list 2 events", async () => {
-        await expect(page).toMatch('Hackathon with Craft Academy');
+        await expect(page).toMatch('Hackathon at Craft Academy');
         await expect(page).toMatch('Amphibian workouts');
     })
 }); 
