@@ -115,7 +115,7 @@
   padding-right: 4rem;
 }
 
-.category-card {
+.category-container .category-card {
   width: 314px;
   height: 200px;
   margin-right: 15px;
@@ -124,14 +124,14 @@
   text-align: center;
 }
 
-.category-name {
+.category-container .category-card .category-name {
   font-size: 16px;
   font-weight: 600;
   color: #2e3e48;
   margin-bottom: 1rem;
 }
 
-.category-header {
+.category-container .category-card .category-header {
   font-size: 24px;
   font-weight: 600;
   color: #2e3e48;
