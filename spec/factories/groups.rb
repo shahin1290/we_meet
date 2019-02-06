@@ -4,5 +4,6 @@ FactoryBot.define do
     description { "GroupDescription" }
     location { "GroupLocation" }
     category
+    association :organizer, factory: :user
   end
 end

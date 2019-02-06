@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2019_02_03_142633) do
     t.string "category_id"
     t.text "description"
     t.string "location"
+    t.integer "organizer_id"
   end
 
   create_table "memberships", force: :cascade do |t|
