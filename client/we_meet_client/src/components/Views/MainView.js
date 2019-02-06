@@ -16,7 +16,3 @@ class MainView extends Component {
 }
 
 export default MainView;
-
-{/* Leave the below in until we decide what to do with it */}
-{/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
-

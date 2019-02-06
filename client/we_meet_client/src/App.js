@@ -6,6 +6,8 @@ import axios from "axios";
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
 import Footer from './components/ui-components/Footer'
 import MainView from './components/Views/MainView';
+import EventView from './components/Views/EventView';
+import { Switch, Route } from 'react-router-dom'
 
 class App extends Component {
 
@@ -90,7 +92,12 @@ class App extends Component {
     return (
       <>
         <NavBar signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
-        <MainView />
+        <div>
+            <Switch>
+              <Route exact path='/' component={MainView}></Route>
+              <Route exact path='/events/:id' component={EventView}></Route>
+            </Switch>
+        </div>
         <Footer />
       </>
     );

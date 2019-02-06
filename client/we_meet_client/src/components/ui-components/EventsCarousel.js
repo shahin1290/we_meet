@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Carousel from "nuka-carousel";
 import { Card, Box, CardBody } from "tailwind-react-ui";
 import moment from "moment";
+import { Link } from 'react-router-dom';
 
 class EventsCarousel extends Component {
   constructor(props) {
@@ -71,55 +72,57 @@ class EventsCarousel extends Component {
     let eventsList = events.map(event => {
       return (
         <Box key={event.id} inlineBlock>
-          <Card className="card event-card" border maxW="sm">
-            <div>
-              <img
-                src={event.image}
-                className="card-image"
-                alt={`image_${event.id}`}
-              />
-            </div>
-            <div className="top-left date-card">
-              <div className="date-card-day">
-                {moment(event.date).format("DD")}
+          <Link to={`/events/${event.id}`} style={{ textDecoration: 'none' }}>
+            <Card className="card event-card" border maxW="sm">
+              <div>
+                <img
+                  src={event.image}
+                  className="card-image"
+                  alt={`image_${event.id}`}
+                />
               </div>
-              <div className="date-card-month">
-                {moment(event.date).format("MMM")}
-              </div>
-            </div>
-            <CardBody className="event-card-body">
-              <div className="date-line">
-                {moment(event.date).format("dddd, MMMM DD, HH:mm")}
-              </div>
-              <div className="title-line">{event.title}</div>
-            </CardBody>
-            <div style={{ height: "40px" }}>
-              <img
-                className="bottom-left event-card-avatar"
-                src={event.avatar}
-                alt={`image_${event.organizer}`}
-              />
-              <div className="event-card-extra-info">
-                <div>Hosted by {event.organizer}</div>
-                <div>
-                  From{" "}
-                  <span style={{ color: "#353e48", fontWeight: "500" }}>
-                    {event.group}
-                  </span>
+              <div className="top-left date-card">
+                <div className="date-card-day">
+                  {moment(event.date).format("DD")}
+                </div>
+                <div className="date-card-month">
+                  {moment(event.date).format("MMM")}
                 </div>
               </div>
+              <CardBody className="event-card-body">
+                <div className="date-line">
+                  {moment(event.date).format("dddd, MMMM DD, HH:mm")}
+                </div>
+                <div className="title-line">{event.title}</div>
+              </CardBody>
+              <div style={{ height: "40px" }}>
+                <img
+                  className="bottom-left event-card-avatar"
+                  src={event.avatar}
+                  alt={`image_${event.organizer}`}
+                />
+                <div className="event-card-extra-info">
+                  <div>Hosted by {event.organizer}</div>
+                  <div>
+                    From{" "}
+                    <span style={{ color: "#353e48", fontWeight: "500" }}>
+                      {event.group}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+            <div
+              style={{
+                fontSize: "16px",
+                fontWeight: "600",
+                color: "#2e3e48",
+                marginBottom: "1rem"
+              }}
+            >
+              {event.name}
             </div>
-          </Card>
-          <div
-            style={{
-              fontSize: "16px",
-              fontWeight: "600",
-              color: "#2e3e48",
-              marginBottom: "1rem"
-            }}
-          >
-            {event.name}
-          </div>
+          </Link>
         </Box>
       );
     });
