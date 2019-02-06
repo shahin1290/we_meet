@@ -104,9 +104,8 @@ class App extends Component {
           <Hero />
           <EventsCarousel />
           <ExploreCategories />
-          {/* <Container style={{ marginTop: '20px' }}>
-            <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} />
-          </Container> */}
+            {/* Leave the below in until we decide what to do with it */}
+            {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
           <Footer />
         </TailwindThemeProvider>
       </>
