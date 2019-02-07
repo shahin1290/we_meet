@@ -10,6 +10,7 @@ import Footer from './components/ui-components/Footer'
 import EventsCarousel from './components/ui-components/EventsCarousel';
 import Events from './components/Events/Events';
 import ExploreCategories from './components/ui-components/ExploreCategories';
+import CreateGroupForm from './components/Groups/CreateGroupForm';
 
 class App extends Component {
 
@@ -106,6 +107,7 @@ class App extends Component {
           <ExploreCategories />
             {/* Leave the below in until we decide what to do with it */}
             {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
+            <CreateGroupForm />
           <Footer />
         </TailwindThemeProvider>
       </>

@@ -3,7 +3,6 @@ import { LinkButton, OutlineButton } from 'tailwind-react-ui';
 import { connect } from 'react-redux';
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
-import CreateGroupForm from '../Groups/CreateGroupForm'
 
 // signUpHandler
 
@@ -17,8 +16,7 @@ class LoginControl extends Component {
     super(props);
     this.state = {
       displayLoginForm: false,
-      displaySignUpForm: false,
-      displayCreateGroupForm: false
+      displaySignUpForm: false
     }
     this.loginHandler = this.props.loginHandler.bind(this);
     this.handleLogoutClick = this.props.logoutHandler.bind(this);
@@ -41,6 +39,7 @@ class LoginControl extends Component {
     this.setState({displaySignUpForm: false})
   }
 
+  
   handleLoginClick(e) {
     this.setState({displayLoginForm: false})
     this.loginHandler(e);
@@ -49,10 +48,6 @@ class LoginControl extends Component {
   handleSignUpClick(e) {
     this.setState({displaySignUpForm: false})
     this.signUpHandler(e);
-  }
-
-  handleStartNewGroupClick(e){
-    this.setState({displayCreateGroupForm: true})
   }
 
   render() {
@@ -90,15 +85,6 @@ class LoginControl extends Component {
       loginForm = <LoginForm loginHandler={this.handleLoginClick.bind(this)} hideFormHandler={this.hideLoginForm.bind(this)}/ >
     }
 
-    if (this.state.displayCreateGroupForm) {
-      let overlay = document.getElementById('overlay')
-      if (overlay) {
-        overlay.style.display = ''
-        document.getElementById('create-group-form').reset()
-      }
-      CreateGroupForm = <CreateGroupForm loginHandler={this.handleStartNewGroupClick.bind(this)} hideFormHandler={this.hideLoginForm.bind(this)}/ >
-    }
-
     return (
       <>
         {startNewGroupLink}
@@ -108,7 +94,6 @@ class LoginControl extends Component {
         {registerButton}
         {loginForm}
         {signUpForm}
-        {CreateGroupForm}
       </>
     );
   }
