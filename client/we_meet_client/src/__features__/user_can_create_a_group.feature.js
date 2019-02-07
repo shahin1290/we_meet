@@ -1,20 +1,24 @@
-
-
-describe('user can create a group', () => {
+describe('Group creation form', () => {
   beforeAll(async () => {
     jest.setTimeout(10000);
     await page.goto(appURL);
   });
 
-  describe('when user clicks "Start a new group"', () => {
+  describe('user can access and use the group form', () => {
     
-    it("renders user to group form", async () => {
-      await page.click('input[value="Submit"]')
-      await expect(page).toMatch('Start a new group')
+    it('should render the group form', async () => {
+      await page.click('input[value="Start a new group"]')
+      await expect(page).toMatch('Create a new group')
     })
 
-    it('returns visitor to group page upon successful creation', async () => {
-      await expect(page).toMatch('Thanks for starting a group.')
+    it("should successfully create the group", async () => {    
+      await page.type('input[name="name"]', 'Group name');
+      await page.type('input[name="description"]', 'About group text');
+      await page.select('#category-selector', 'Tech');
+      await page.type('input[name="location"]', 'Stockholm');
+      await page.click('input[value="Submit"]')
+      await expect(page).toMatch('Congratulations, your group has been created!')
+
     })
   });
 })

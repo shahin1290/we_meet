@@ -23,7 +23,7 @@ class CreateGroupForm extends Component {
     e.preventDefault();
 
     const group = {
-      name: this.state.title,
+      name: this.state.name,
       description: this.state.description,
       location: this.state.location,
       category_id: this.state.category_id,
