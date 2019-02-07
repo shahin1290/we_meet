@@ -33,7 +33,6 @@ class CreateGroupForm extends Component {
 
   createGroup(e) {
     e.preventDefault();
-    debugger
     const group = {
       name: this.state.name,
       description: this.state.description,
@@ -92,6 +91,7 @@ class CreateGroupForm extends Component {
                   name="category_id"
                   onChange={this.onChange}
                   className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" id="grid-state">
+                  <option value="">Select option</option>
                   {categoryOptions}
                 </select>
               </div>

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
+import CreateGroupForm from '../Groups/CreateGroupForm'
 
 // signUpHandler
 
@@ -68,7 +69,6 @@ class LoginControl extends Component {
       'expiry': localStorage.getItem('expiry'),
       'uid': localStorage.getItem('uid'),
     }
-
     let response = await axios.post('http://localhost:3000/groups', { group }, { headers: credentials })
     this.hideCreateGroupForm()
     console.log(response)

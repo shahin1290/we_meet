@@ -107,7 +107,6 @@ class App extends Component {
           <ExploreCategories />
             {/* Leave the below in until we decide what to do with it */}
             {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
-            <CreateGroupForm />
           <Footer />
         </TailwindThemeProvider>
       </>
