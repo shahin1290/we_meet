@@ -1,16 +1,32 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class EventView extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { event: this.props.location.state.event };
+    this.state = { event: {} };
   }
 
 
   componentDidMount() {
-    console.log('event view')
+
+    try {
+      this.setState({ event: this.props.location.state.event })
+    }
+    catch (err) {
+      // Get the number from url
+      let id = this.props.location.pathname.split('/').pop()
+      this.getEvent(id)
+    }
   }
+
+  async getEvent(id) {
+    const response = await axios.get(`http://localhost:3000/events/${id}`)
+    const event = response.data.event
+    this.setState({ event });
+  }
+
   render() {
     return (
       <>

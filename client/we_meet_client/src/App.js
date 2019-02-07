@@ -94,7 +94,7 @@ class App extends Component {
         <NavBar signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
         <Switch>
           <Route exact path='/' component={MainView}></Route>
-          <Route exact path='/event' component={EventView}></Route>
+          <Route exact path='/events/:id' component={EventView}></Route>
         </Switch>
         <Footer />
       </>
