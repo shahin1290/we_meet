@@ -1,8 +1,9 @@
-class GroupsController < ApplicationController
-  # before_action :authenticate_user!, only: [:create]
+# frozen_string_literal: true
 
-  def index
-  end
+class GroupsController < ApplicationController
+  before_action :authenticate_user!, only: [:create]
+
+  def index; end
 
   def show
     group = Group.find(params[:id])
@@ -10,8 +11,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(group_params) 
-    if group.save
+    group = Group.create(group_params.merge!(organizer: current_user))
+    binding.pry
+    if group.persisted?
       render json: { message: 'You have created a group successfully' }
     else
       render json: { error: group.errors.full_messages }, status: 400
@@ -19,11 +21,8 @@ class GroupsController < ApplicationController
   end
 
   private
+
   def group_params
     params.require(:group).permit(:name, :category_id, :description, :location, :organizer_id)
   end
-
 end
-
-
-

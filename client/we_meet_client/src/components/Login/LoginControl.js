@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { LinkButton, OutlineButton } from 'tailwind-react-ui';
 import { connect } from 'react-redux';
+import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 
@@ -24,37 +25,60 @@ class LoginControl extends Component {
   }
 
   displayLoginForm() {
-    this.setState({displayLoginForm: true})
+    this.setState({ displayLoginForm: true })
   }
 
   hideLoginForm() {
-    this.setState({displayLoginForm: false})
+    this.setState({ displayLoginForm: false })
   }
 
   displaySignUpForm() {
-    this.setState({displaySignUpForm: true})
+    this.setState({ displaySignUpForm: true })
   }
 
   hideSignUpForm() {
-    this.setState({displaySignUpForm: false})
+    this.setState({ displaySignUpForm: false })
   }
 
   
   handleLoginClick(e) {
-    this.setState({displayLoginForm: false})
+    this.setState({ displayLoginForm: false })
     this.loginHandler(e);
   }
 
   handleSignUpClick(e) {
-    this.setState({displaySignUpForm: false})
+    this.setState({ displaySignUpForm: false })
     this.signUpHandler(e);
+  }
+
+  displayCreateGroupForm() {
+    this.setState({ displayCreateGroupForm: true })
+  }
+
+  hideCreateGroupForm() {
+    this.setState({ displayCreateGroupForm: false })
+  }
+
+  async createGroup(group) {
+
+    const credentials = {
+      'access-token': localStorage.getItem('access-token'),
+      'token-type': localStorage.getItem('token-type'),
+      'client': localStorage.getItem('client'),
+      'expiry': localStorage.getItem('expiry'),
+      'uid': localStorage.getItem('uid'),
+    }
+
+    let response = await axios.post('http://localhost:3000/groups', { group }, { headers: credentials })
+    this.hideCreateGroupForm()
+    console.log(response)
   }
 
   render() {
     const isSignedIn = this.props.isSignedIn;
-    let startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm
+    let startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm
     if (isSignedIn) {
-      startNewGroupLink = <LinkButton onClick={this.handleStartNewGroupClick.bind(this)} text="grey-darkest" text-hocus="teal" style={{ textDecoration: 'none' }}>Start a new group</LinkButton>
+      startNewGroupLink = <LinkButton onClick={this.displayCreateGroupForm.bind(this)} text="grey-darkest" text-hocus="teal" style={{ textDecoration: 'none' }}>Start a new group</LinkButton>
       profileLink = <LinkButton text="grey-darkest" text-hocus="teal" style={{ marginLeft: '13px', textDecoration: 'none' }}>Profile</LinkButton>
       logoutButton = <OutlineButton onClick={this.handleLogoutClick.bind(this)} brand="primary" text-hocus="white" style={{ marginLeft: '15px' }}>
         Log out</OutlineButton>;
@@ -65,6 +89,15 @@ class LoginControl extends Component {
         Sign up</OutlineButton>
     }
 
+    if (this.state.displayCreateGroupForm) {
+      let overlay = document.getElementById('overlay')
+      if (overlay) {
+        overlay.style.display = ''
+        document.getElementById('create-group-form').reset()
+      }
+      groupForm = <CreateGroupForm createGroupHandler={this.createGroup.bind(this)} hideFormHandler={this.hideCreateGroupForm.bind(this)} />
+    };
+
     if (this.state.displaySignUpForm) {
       let overlay = document.getElementById('overlay')
       let form = document.getElementById('signup-form')
@@ -72,9 +105,9 @@ class LoginControl extends Component {
         overlay.style.display = ''
         form.reset()
       }
-      signUpForm = <SignUpForm signUpHandler={this.handleSignUpClick.bind(this)} hideFormHandler={this.hideSignUpForm.bind(this)}/ >
-  
-    }
+      signUpForm = <SignUpForm signUpHandler={this.handleSignUpClick.bind(this)} hideFormHandler={this.hideSignUpForm.bind(this)} />
+
+    };
 
     if (this.state.displayLoginForm) {
       let overlay = document.getElementById('overlay')
@@ -82,8 +115,8 @@ class LoginControl extends Component {
         overlay.style.display = ''
         document.getElementById('login-form').reset()
       }
-      loginForm = <LoginForm loginHandler={this.handleLoginClick.bind(this)} hideFormHandler={this.hideLoginForm.bind(this)}/ >
-    }
+      loginForm = <LoginForm loginHandler={this.handleLoginClick.bind(this)} hideFormHandler={this.hideLoginForm.bind(this)} />
+    };
 
     return (
       <>
@@ -94,6 +127,7 @@ class LoginControl extends Component {
         {registerButton}
         {loginForm}
         {signUpForm}
+        {groupForm}
       </>
     );
   }
