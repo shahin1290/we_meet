@@ -1,6 +1,16 @@
 import React, { Component } from "react";
 
 class EventView extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { event: this.props.location.state.event };
+  }
+
+
+  componentDidMount() {
+    console.log('event view')
+  }
   render() {
     return (
       <>
@@ -13,7 +23,7 @@ class EventView extends Component {
             marginBottom: "50px"
           }}
         >
-          This is the event page
+          This is the event page for {this.state.event.title}
         </div>
       </>
     );

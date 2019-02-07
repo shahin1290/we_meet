@@ -72,7 +72,7 @@ class EventsCarousel extends Component {
     let eventsList = events.map(event => {
       return (
         <Box key={event.id} inlineBlock>
-          <Link to={`/events/${event.id}`} style={{ textDecoration: 'none' }}>
+          <Link to={{pathname: '/event', state: {event}}} style={{ textDecoration: 'none' }}>
             <Card className="card event-card" border maxW="sm">
               <div>
                 <img

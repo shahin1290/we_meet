@@ -7,7 +7,7 @@ import { signInUser, signOutUser, registerUser } from './redux-token-auth-config
 import Footer from './components/ui-components/Footer'
 import MainView from './components/Views/MainView';
 import EventView from './components/Views/EventView';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 
 class App extends Component {
 
@@ -92,19 +92,17 @@ class App extends Component {
     return (
       <>
         <NavBar signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
-        <div>
-            <Switch>
-              <Route exact path='/' component={MainView}></Route>
-              <Route exact path='/events/:id' component={EventView}></Route>
-            </Switch>
-        </div>
+        <Switch>
+          <Route exact path='/' component={MainView}></Route>
+          <Route exact path='/event' component={EventView}></Route>
+        </Switch>
         <Footer />
       </>
     );
   }
 }
 
-export default connect(
+export default withRouter(connect(
   null,
   { signInUser, signOutUser, registerUser },
-)(App)
+)(App))
