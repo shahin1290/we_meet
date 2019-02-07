@@ -29805,3 +29805,14 @@ table {
   color: #2e3e48;
   margin-bottom: 1rem;
 }
+
+.sidebar {
+  width: 130px;
+  position: fixed;
+  z-index: 1;
+  top: 15rem;
+  float: right;
+  background: #eee;
+  overflow-x: hidden;
+  padding: 8px 0;
+}

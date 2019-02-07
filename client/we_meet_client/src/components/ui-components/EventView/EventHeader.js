@@ -1,11 +1,13 @@
 import React from "react";
 import moment from "moment";
 
+{/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
+
 const EventHeader = props => {
   let event = props.event;
   return (
     <>
-      <div style={{ border: "2px solid rgba(0,0,0,.12)" }}>
+      <div style={{ borderTop: "2px solid rgba(0,0,0,.12)", borderBottom: "1px solid rgba(0,0,0,.12)"}}>
         <div
           style={{
             position: "absolute",
@@ -47,7 +49,8 @@ const EventHeader = props => {
               lineHeight: "0.8",
               marginLeft:"0.1rem"
             }}>
-                  {moment(event.date).format("dddd, MMMM DD, HH:mm")}
+                {moment(event.date).format("dddd, MMMM DD, ")}
+                {event.time}
           </div>
           <h1 style={{ fontSize: "2.75rem" }}>{event.title}</h1>
           <div>

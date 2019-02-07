@@ -48,7 +48,8 @@ class EventsCarousel extends Component {
               </div>
               <CardBody className="event-card-body">
                 <div className="date-line">
-                  {moment(event.date).format("dddd, MMMM DD, HH:mm")}
+                  {moment(event.date).format("dddd, MMMM DD, ")}
+                  {event.time}
                 </div>
                 <div className="title-line">{event.title}</div>
               </CardBody>

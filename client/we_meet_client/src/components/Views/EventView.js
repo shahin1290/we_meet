@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import EventHeader from '../ui-components/EventView/EventHeader'
+import EventBody from '../ui-components/EventView/EventBody'
 
 class EventView extends Component {
 
@@ -40,14 +41,10 @@ class EventView extends Component {
     return (
       <>
         <EventHeader event={this.state.event} />
-        {/* <EventBodyLeftSide />
-        <EventBodyRightSide /> */}
+        <EventBody event={this.state.event} />
       </>
     );
   }
 }
 
 export default EventView;
-
-{/* Leave the below in until we decide what to do with it */}
-{/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
