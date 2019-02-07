@@ -1,5 +1,4 @@
 import React from 'react'
-import hero from '../../hero.png'
 import { Col, Row, FillButton } from 'tailwind-react-ui'
 
 const Hero = () => {
@@ -14,7 +13,7 @@ const Hero = () => {
         </div>
       </Col>      
       <Col w="1/2" text="right" p="4" style={{height: '550px', paddingRight: '80px'}}>
-        <img src={hero} alt="hero" style={{height: '540px'}} />
+        <img src='./assets/images/hero.png' alt="hero" style={{height: '540px'}} />
       </Col>
     </Row>
   )
