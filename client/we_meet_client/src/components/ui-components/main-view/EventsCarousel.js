@@ -30,7 +30,7 @@ class EventsCarousel extends Component {
       return (
         <Box key={event.id} inlineBlock>
           <Link to={{pathname: `/events/${event.id}`, state: {event}}} style={{ textDecoration: 'none' }}>
-            <Card className="card event-card" border maxW="sm">
+            <Card className="card event-card" id="card" border maxW="sm">
               <div>
                 <img
                   src={event.image || './assets/images/tech.png'}

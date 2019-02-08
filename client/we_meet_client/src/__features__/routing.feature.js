@@ -11,13 +11,12 @@ describe('SPA routing', () => {
     });
 
     describe('routes to views selected', () => {
-
         it('should show specific event view from events carousel', async () => {
-            await page.click('Hackathon at Craft Academy')
+            await page.click('#card')
             await expect(page).toMatch('sthlm')
             await expect(page).toMatch('2019-12-12')
         });
     
     })
 
-}); 
+});
