@@ -12,15 +12,15 @@ describe 'POST /groups' do
     before do
       post "/groups", params: { group: {name: 'coding', 
                                         category_id: category.id,
-                                        location: "Stockholm",
-                                        description: "This is about coding",
+                                        location: 'Stockholm',
+                                        description: 'This is about coding',
                                         organizer_id: user.id
                                         } }, headers: headers
       @last_group = Group.last
     end
 
     it 'responds with success message' do
-      expect(response_json['message']).to eq 'You have created a group successfully'
+      expect(response_json['message']).to eq 'Congratulations, your group has been created!'
     end
 
     it 'responds with status 200' do
