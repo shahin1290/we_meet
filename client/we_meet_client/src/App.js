@@ -4,13 +4,11 @@ import './css/tailwind.css';
 import AppHeader from './components/ui-components/AppHeader'
 import axios from "axios";
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
-import { Container, TailwindThemeProvider } from 'tailwind-react-ui';
+import { TailwindThemeProvider } from 'tailwind-react-ui';
 import Hero from './components/ui-components/Hero'
 import Footer from './components/ui-components/Footer'
 import EventsCarousel from './components/ui-components/EventsCarousel';
-import Events from './components/Events/Events';
 import ExploreCategories from './components/ui-components/ExploreCategories';
-import CreateGroupForm from './components/Groups/CreateGroupForm';
 
 class App extends Component {
 
@@ -105,8 +103,8 @@ class App extends Component {
           <Hero />
           <EventsCarousel />
           <ExploreCategories />
-            {/* Leave the below in until we decide what to do with it */}
-            {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
+          {/* Leave the below in until we decide what to do with it */}
+          {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
           <Footer />
         </TailwindThemeProvider>
       </>

@@ -85,6 +85,13 @@ beforeAll(async () => {
           image: null
         }
       })
+    },
+    groups: {
+      status: 200,
+      headers: {},
+      body: JSON.stringify({
+        message: 'Congratulations, your group has been created!'
+      })
     }
   }
 

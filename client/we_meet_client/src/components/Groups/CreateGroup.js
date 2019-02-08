@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 
 
-class CreateGroupForm extends Component {
+class CreateGroup extends Component {
 
   constructor(props) {
     super(props);
@@ -88,6 +88,7 @@ class CreateGroupForm extends Component {
                   Category
                 </label>
                 <select
+                  id="category-selector"
                   name="category_id"
                   onChange={this.onChange}
                   className="block appearance-none w-full bg-grey-lighter border border-grey-lighter text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey" id="grid-state">
@@ -122,4 +123,4 @@ class CreateGroupForm extends Component {
   }
 }
 
-export default CreateGroupForm
+export default CreateGroup
