@@ -6,8 +6,8 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' 
 import NavBar from './components/ui-components/NavBar'
 import Footer from './components/ui-components/Footer'
-import MainView from './components/Views/MainView';
-import EventView from './components/Views/EventView';
+import MainView from './components/views/MainView';
+import EventView from './components/views/EventView';
 
 class App extends Component {
 

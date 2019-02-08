@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoginControl from '../components/Login/LoginControl';
+import LoginControl from '../components/login/LoginControl';
 
 describe('<LoginControl />', () => {
 
