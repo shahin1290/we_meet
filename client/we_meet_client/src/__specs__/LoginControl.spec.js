@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoginControl from '../components/Login/LoginControl';
+import AppControl from '../components/login/AppControl';
 
-describe('<LoginControl />', () => {
+describe('<AppControl />', () => {
 
   it('shows login and register buttons', () => {
-    const component = shallow(<LoginControl />);
+    const component = shallow(<AppControl />);
     const loginButton = component.find('Log in');
     const registerButton = component.find('Sign up');
     expect(component.containsMatchingElement(loginButton));
@@ -13,7 +13,7 @@ describe('<LoginControl />', () => {
   });
 
   it('replaces login and register with start new group, profile, and logout buttons when logged in', () => {
-    const component = shallow(<LoginControl />);
+    const component = shallow(<AppControl />);
     const startNewGroupLink = component.find('Start a new group');
     const profileLink = component.find('Profile');
     const logoutButton = component.find('Log out');
