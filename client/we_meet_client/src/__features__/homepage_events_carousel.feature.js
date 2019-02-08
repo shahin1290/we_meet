@@ -1,4 +1,5 @@
 require('../__mocks__/mocks')
+require('../__mocks__/responseLog')
 
 describe('Homepage body', () => {
     beforeAll(async () => {
@@ -17,8 +18,8 @@ describe('Homepage body', () => {
         });
     
         it("with events listed", async () => {
-            await expect(page).toMatch('Hackathon at Craft Academy');
-            await expect(page).toMatch('Amphibian workouts');
+            await expect(page).toMatch('Hackathon');
+            await expect(page).toMatch('Meetup');
         });
 
     })

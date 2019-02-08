@@ -8,6 +8,11 @@ class EventsController < ApplicationController
     render json: events, each_serializer: Events::IndexSerializer
   end
 
+  def show
+    event = Event.find(params[:id])
+    render json: event, serializer: Events::ShowSerializer
+  end
+
   def create
     group = Group.find(params[:group_id])
     event = group.events.create(event_params)
