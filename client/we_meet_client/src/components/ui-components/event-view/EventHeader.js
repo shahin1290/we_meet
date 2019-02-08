@@ -75,7 +75,7 @@ const EventHeader = props => {
             <p>
               Hosted by{" "}
               <span style={{ fontWeight: "bold", color: "teal" }}>
-                [Organizer's name required]
+                Organizer's name here
               </span>
             </p>
             <p>
