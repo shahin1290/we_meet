@@ -19,6 +19,15 @@ describe 'GET /groups/:id' do
     expect(response).to have_http_status(200)
   end
 
+  it 'returns a group name' do 
+    expect(response_json['group']['name']).not_to be nil
+  end
+
+  it 'returns a valid image url' do 
+    # TODO: We should test if the link is a valid url. 
+    expect(response_json['group']['image_url']).not_to be nil
+  end
+
   it 'returns 3 future events' do
     expect(response_json['group']['future_events'].count).to eq 3
   end

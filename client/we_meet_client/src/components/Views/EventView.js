@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
-import EventHeader from '../ui-components/EventView/EventHeader'
-import EventBody from '../ui-components/EventView/EventBody'
+import EventHeader from '../ui-components/event-view/EventHeader'
+import EventBody from '../ui-components/event-view/EventBody'
 
 class EventView extends Component {
 

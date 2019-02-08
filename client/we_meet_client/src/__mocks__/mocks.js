@@ -48,7 +48,7 @@ beforeAll(async () => {
         events: [
           {
             "id": 1,
-            "title": "Hackathon",
+            "title": "Hackathon at Craft Academy",
             "date": "2019-12-12",
             "time": "14:00",
             "description": "somewhere",
@@ -65,7 +65,7 @@ beforeAll(async () => {
           },
           {
             "id": 1,
-            "title": "Meetup",
+            "title": "Meetup at Craft Academy",
             "date": "2019-12-12",
             "time": "14:00",
             "description": "somewhere",

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Hero from "../ui-components/MainView/Hero";
-import EventsCarousel from "../ui-components/MainView/EventsCarousel";
-import ExploreCategories from "../ui-components/MainView/ExploreCategories";
+import Hero from "../ui-components/main-view/Hero";
+import EventsCarousel from "../ui-components/main-view/EventsCarousel";
+import ExploreCategories from "../ui-components/main-view/ExploreCategories";
 
 class MainView extends Component {
   render() {

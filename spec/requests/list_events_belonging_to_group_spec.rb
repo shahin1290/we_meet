@@ -22,6 +22,14 @@ describe 'GET /groups/:id/events' do
     expect(response).to have_http_status(200)
   end
 
+  it 'returns a event title' do 
+    expect(response_json['events'][0]['title']).not_to be nil
+  end
+
+   it 'returns a valid image url' do 
+    expect(response_json['events'][0]['image_url']).not_to be nil
+  end
+
   it 'returns 3 events' do
     expect(response_json['events'].count).to eq 3
   end

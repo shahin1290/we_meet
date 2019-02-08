@@ -15,7 +15,7 @@ describe Events::ShowSerializer, type: :serializer do
   end
 
   it 'contains relevant keys' do
-    expected_keys = %w[id title date time description location attendees group]
+    expected_keys = %w[id title date time description location image_url group attendees ]
     expect(subject.keys).to match expected_keys
   end
 end
