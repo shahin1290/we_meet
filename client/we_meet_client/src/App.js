@@ -6,7 +6,6 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' 
 import NavBar from './components/ui-components/NavBar'
 import Footer from './components/ui-components/Footer'
-import CreateGroupForm from './components/Groups/CreateGroupForm';
 import MainView from './components/Views/MainView';
 import EventView from './components/Views/EventView';
 
