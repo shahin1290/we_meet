@@ -5,14 +5,19 @@ import {
   NavMenu
 } from 'tailwind-react-ui';
 
+import { Link, Route } from 'react-router-dom';
 import LoginControl from '../Login/LoginControl';
 
-class AppHeader extends Component {
+class NavBar extends Component {
   render() {
 
     return (
       <Header bg="white" text="white" screen="md">
-      <img src='./assets/images/wemeet_logo.png' id="logo" alt="logo" />
+        <div>
+          <Link to='/' style={{ textDecoration: 'none' }}>
+            <img src='./assets/images/wemeet_logo.png' id="logo" alt="logo" />
+          </Link>
+        </div>
         <NavToggle />
         <NavMenu>
           <LoginControl signUpHandler={this.props.signUpHandler} loginHandler={this.props.loginHandler} logoutHandler={this.props.logoutHandler}/>
@@ -23,4 +28,4 @@ class AppHeader extends Component {
 
 }
 
-export default AppHeader
+export default NavBar

@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/tailwind.css';
-import AppHeader from './components/ui-components/AppHeader'
+import NavBar from './components/ui-components/NavBar'
 import axios from "axios";
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
-import { Container, TailwindThemeProvider } from 'tailwind-react-ui';
-import Hero from './components/ui-components/Hero'
 import Footer from './components/ui-components/Footer'
-import EventsCarousel from './components/ui-components/EventsCarousel';
-import Events from './components/Events/Events';
-import ExploreCategories from './components/ui-components/ExploreCategories';
+import MainView from './components/Views/MainView';
+import EventView from './components/Views/EventView';
+import { Switch, Route, withRouter } from 'react-router-dom'
 
 class App extends Component {
 
@@ -90,30 +88,22 @@ class App extends Component {
       this.setState({ containerMessage: message })
     }
   }
+  
   render() {
     return (
       <>
-        <TailwindThemeProvider
-          theme={{
-            brandColors: {
-              primary: 'teal',
-            },
-          }}
-        >
-          <AppHeader signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
-          <Hero />
-          <EventsCarousel />
-          <ExploreCategories />
-            {/* Leave the below in until we decide what to do with it */}
-            {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
-          <Footer />
-        </TailwindThemeProvider>
+        <NavBar signUpHandler={this.registerUser} loginHandler={this.authorizeUser} logoutHandler={this.unauthorizeUser} />
+        <Switch>
+          <Route exact path='/' component={MainView}></Route>
+          <Route exact path='/events/:id' component={EventView}></Route>
+        </Switch>
+        <Footer />
       </>
     );
   }
 }
 
-export default connect(
+export default withRouter(connect(
   null,
   { signInUser, signOutUser, registerUser },
-)(App)
+)(App))

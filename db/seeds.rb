@@ -1,0 +1,5 @@
+user1 = User.create(email:'john@mail.com', password:'password')
+user2 = User.create(email:'jane@mail.com', password:'password')
+category1 = Category.create(name: 'Tech')
+group1 = Group.create(name:'Craft', description: "somewhere", location: 'sthlm', organizer: user1, category: category1)
+event1 = Event.create(title:'Hackathon', description: "somewhere", location: 'sthlm', group: group1, date: '2019-12-12', time: '14:00')
