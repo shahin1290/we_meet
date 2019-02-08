@@ -10,6 +10,7 @@ The live site can be viewed [here]().
 * Users can RSVP to events
 * Visitors can view an events carousel on the home page
 * Visitors can view an categories table on the home page
+* User can create a group
 
 ## Screenshots
 
