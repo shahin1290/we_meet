@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EventsCarousel from '../components/ui-components/EventsCarousel';
+import EventsCarousel from '../components/ui-components/main-view/EventsCarousel';
 
 // NOTE: this component is currently replaced by EventsCarousel component.
 // But keep it in case we need it for a future Events page.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AppControl from '../components/login/AppControl';
+import AppControl from '../components/ui-components/login/AppControl';
 
 describe('<AppControl />', () => {
 

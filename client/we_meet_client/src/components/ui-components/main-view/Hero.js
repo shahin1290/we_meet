@@ -1,5 +1,5 @@
 import React from 'react'
-import hero from '../../hero.png'
+import hero from '../../../hero.png'
 import { Col, Row, FillButton } from 'tailwind-react-ui'
 
 const Hero = () => {

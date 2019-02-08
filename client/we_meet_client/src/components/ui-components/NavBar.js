@@ -6,7 +6,7 @@ import {
 } from 'tailwind-react-ui';
 
 import { Link, Route } from 'react-router-dom';
-import AppControl from '../login/AppControl';
+import AppControl from '../ui-components/login/AppControl';
 
 class NavBar extends Component {
   render() {
