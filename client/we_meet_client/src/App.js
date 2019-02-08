@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/tailwind.css';
-import NavBar from './components/ui-components/NavBar'
 import axios from "axios";
-import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' // <-- note this is YOUR file, not the redux-token-auth NPM module
+import { Switch, Route, withRouter } from 'react-router-dom'
+import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' 
+import NavBar from './components/ui-components/NavBar'
 import Footer from './components/ui-components/Footer'
 import CreateGroupForm from './components/Groups/CreateGroupForm';
 import MainView from './components/Views/MainView';
 import EventView from './components/Views/EventView';
-import { Switch, Route, withRouter } from 'react-router-dom'
 
 class App extends Component {
 

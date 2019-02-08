@@ -12,9 +12,8 @@ class GroupsController < ApplicationController
 
   def create
     group = Group.create(group_params.merge!(organizer: current_user))
-    binding.pry
     if group.persisted?
-      render json: { message: 'You have created a group successfully' }
+      render json: { message: 'Congratulations, your group has been created!' }
     else
       render json: { error: group.errors.full_messages }, status: 400
     end
@@ -23,6 +22,6 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:name, :category_id, :description, :location, :organizer_id)
+    params.require(:group).permit(:name, :category_id, :description, :location)
   end
 end

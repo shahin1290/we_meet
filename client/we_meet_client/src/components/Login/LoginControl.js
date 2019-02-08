@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
-import CreateGroupForm from '../Groups/CreateGroupForm'
+import CreateGroup from '../Groups/CreateGroup'
 
 // signUpHandler
 
@@ -18,7 +18,8 @@ class LoginControl extends Component {
     super(props);
     this.state = {
       displayLoginForm: false,
-      displaySignUpForm: false
+      displaySignUpForm: false,
+      navBarNotification: ''
     }
     this.loginHandler = this.props.loginHandler.bind(this);
     this.handleLogoutClick = this.props.logoutHandler.bind(this);
@@ -41,7 +42,7 @@ class LoginControl extends Component {
     this.setState({ displaySignUpForm: false })
   }
 
-  
+
   handleLoginClick(e) {
     this.setState({ displayLoginForm: false })
     this.loginHandler(e);
@@ -70,23 +71,55 @@ class LoginControl extends Component {
       'uid': localStorage.getItem('uid'),
     }
     let response = await axios.post('http://localhost:3000/groups', { group }, { headers: credentials })
-    this.hideCreateGroupForm()
-    console.log(response)
+    this.setState({ navBarNotification: response.data.message, displayCreateGroupForm: false })
+
   }
 
   render() {
     const isSignedIn = this.props.isSignedIn;
     let startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm
     if (isSignedIn) {
-      startNewGroupLink = <LinkButton onClick={this.displayCreateGroupForm.bind(this)} text="grey-darkest" text-hocus="teal" style={{ textDecoration: 'none' }}>Start a new group</LinkButton>
-      profileLink = <LinkButton text="grey-darkest" text-hocus="teal" style={{ marginLeft: '13px', textDecoration: 'none' }}>Profile</LinkButton>
-      logoutButton = <OutlineButton onClick={this.handleLogoutClick.bind(this)} brand="primary" text-hocus="white" style={{ marginLeft: '15px' }}>
-        Log out</OutlineButton>;
+      startNewGroupLink = (
+        <LinkButton
+          id="create-group"
+          onClick={this.displayCreateGroupForm.bind(this)}
+          text="grey-darkest"
+          text-hocus="teal"
+          style={{ textDecoration: 'none' }}>
+          Start a new group
+      </LinkButton>);
+      profileLink = (
+        <LinkButton
+          text="grey-darkest"
+          text-hocus="teal"
+          style={{ marginLeft: '13px', textDecoration: 'none' }}>
+          Profile
+      </LinkButton>);
+      logoutButton = (
+        <OutlineButton
+          onClick={this.handleLogoutClick.bind(this)}
+          brand="primary"
+          text-hocus="white"
+          style={{ marginLeft: '15px' }}>
+          Log out
+      </OutlineButton>);
     } else {
-      loginButton = <OutlineButton onClick={this.displayLoginForm.bind(this)} id="login-btn" brand="primary" text-hocus="white">
-        Log in</OutlineButton>;
-      registerButton = <OutlineButton onClick={this.displaySignUpForm.bind(this)} brand="primary" text-hocus="white" style={{ marginLeft: '10px' }}>
-        Sign up</OutlineButton>
+      loginButton = (
+        <OutlineButton
+          onClick={this.displayLoginForm.bind(this)}
+          id="login-btn"
+          brand="primary"
+          text-hocus="white">
+          Log in
+        </OutlineButton>);
+      registerButton = (
+        <OutlineButton
+          onClick={this.displaySignUpForm.bind(this)}
+          brand="primary"
+          text-hocus="white"
+          style={{ marginLeft: '10px' }}>
+          Sign up
+        </OutlineButton>);
     }
 
     if (this.state.displayCreateGroupForm) {
@@ -95,7 +128,7 @@ class LoginControl extends Component {
         overlay.style.display = ''
         document.getElementById('create-group-form').reset()
       }
-      groupForm = <CreateGroupForm createGroupHandler={this.createGroup.bind(this)} hideFormHandler={this.hideCreateGroupForm.bind(this)} />
+      groupForm = <CreateGroup createGroupHandler={this.createGroup.bind(this)} hideFormHandler={this.hideCreateGroupForm.bind(this)} />
     };
 
     if (this.state.displaySignUpForm) {
@@ -120,6 +153,7 @@ class LoginControl extends Component {
 
     return (
       <>
+        <p style={{color: 'black'}}>{this.state.navBarNotification}</p>
         {startNewGroupLink}
         {profileLink}
         {logoutButton}
