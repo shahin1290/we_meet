@@ -46,8 +46,40 @@ beforeAll(async () => {
       },
       body: JSON.stringify({
         events: [
-          { id: 1, title: "Event 1" },
-          { id: 2, title: "Event 2" }
+          {
+            "id": 1,
+            "title": "Hackathon at Craft Academy",
+            "date": "2019-12-12",
+            "time": "14:00",
+            "description": "somewhere",
+            "location": "sthlm",
+            "organizer": JSON.stringify({
+              "email": "john@mail.com"
+            }),
+            "group": JSON.stringify({
+              "id": 1,
+              "name": "Craft",
+              "description": "somewhere",
+              "location": "sthlm"
+            })
+          },
+          {
+            "id": 1,
+            "title": "Meetup at Craft Academy",
+            "date": "2019-12-12",
+            "time": "14:00",
+            "description": "somewhere",
+            "location": "Gothenburg",
+            "organizer": JSON.stringify({
+              "email": "jane@mail.com"
+            }),
+            "group": JSON.stringify({
+              "id": 1,
+              "name": "Craft",
+              "description": "somewhere",
+              "location": "sthlm"
+            })
+          }
         ]
       })
     },
@@ -84,6 +116,13 @@ beforeAll(async () => {
           nickname: null,
           image: null
         }
+      })
+    },
+    groups: {
+      status: 200,
+      headers: {},
+      body: JSON.stringify({
+        message: 'Congratulations, your group has been created!'
       })
     }
   }

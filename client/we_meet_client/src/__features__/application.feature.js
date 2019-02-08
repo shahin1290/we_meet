@@ -15,7 +15,8 @@ describe('WeMeet App', () => {
     });
 
     it("should list 2 events", async () => {
+        await page.waitFor(1000)
         await expect(page).toMatch('Hackathon at Craft Academy');
-        await expect(page).toMatch('Amphibian workouts');
+        await expect(page).toMatch('Meetup at Craft Academy');
     })
 }); 

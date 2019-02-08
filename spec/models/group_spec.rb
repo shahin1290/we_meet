@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
-RSpec.describe Group, type: :model do
+describe Group, type: :model do
   describe 'DB table' do
     it { is_expected.to have_db_column :name }
     it { is_expected.to have_db_column :description }
     it { is_expected.to have_db_column :location }
-
   end
 
   describe 'Validations' do
@@ -50,6 +49,17 @@ RSpec.describe Group, type: :model do
     it '#future_events lists events belonging to the group' do
       ids_list = subject.future_events.map(&:group_id)
       expect(ids_list).not_to include not_subject.id
+    end
+  end
+
+  describe 'Image attachment' do
+    let!(:image) { File.open(fixture_path + '/basic_image.png') }
+
+    it 'can be attached to group' do
+      subject.image.attach(io: image,
+                           filename: 'attachment_1.png',
+                           content_type: 'image/png')
+      expect(subject.image).to be_attached
     end
   end
 end

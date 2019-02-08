@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ExploreCategories from '../components/ui-components/ExploreCategories';
+import ExploreCategories from '../components/ui-components/main-view/ExploreCategories';
 
 describe('<ExploreCategories />', () => {
   it('shows "Events near you" header text', () => {

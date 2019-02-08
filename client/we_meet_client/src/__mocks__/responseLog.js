@@ -3,13 +3,14 @@
 // require('../__mocks__/responseLog')
 
 beforeAll(async () => {
+
   await page.on("response", async response => {
     // We want to identify the endpoint so that we only display relevant info
     const source = response.request().url().split("/").pop();
     // This is an example of endpoints we want to monitor
     // This conditional can of course be removed or edited
 
-    if (source === "sign_in" || source === "events") {
+    if (source === "sign_in" || source === "groups") {
       let json = await (await response.json())
       let headers = await (await response.headers())
       console.log("Intecepted responce from: " + source)
