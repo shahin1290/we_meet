@@ -6,7 +6,7 @@ class Events::IndexSerializer < ActiveModel::Serializer
   attribute :organizer
 
   def organizer
-    { email: object.group.organizer.email }
+    { name: object.group.organizer.name }
   end
 
   def time
