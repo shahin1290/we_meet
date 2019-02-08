@@ -11,6 +11,13 @@ const SignUpForm = (props) => {
         <form id="signup-form" onSubmit={props.signUpHandler} className="w-full max-w-md">
           <h1 className="font-normal text-3xl text-grey-darkest leading-loose my-3 w-full">Sign up for WeMeet</h1>
           <div className="flex flex-wrap -mx-3 mb-6">
+          <div className='w-full px-3 mb-6 md:mb-0'>
+              <label className="block uppercase tracking-wide text-grey-darker text-xs mb-2">
+                Name
+          </label>
+              <input type="text" className="appearance-none block w-full bg-grey-lighter text-grey-darker rounded py-3 px-4 mb-3 leading-tight">
+              </input>
+            </div>
             <div className='w-full px-3 mb-6 md:mb-0'>
               <label className="block uppercase tracking-wide text-grey-darker text-xs mb-2">
                 Email
