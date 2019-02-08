@@ -6,7 +6,7 @@ import {
 } from 'tailwind-react-ui';
 
 import { Link, Route } from 'react-router-dom';
-import LoginControl from '../Login/LoginControl';
+import AppControl from '../ui-components/login/AppControl';
 
 class NavBar extends Component {
   render() {
@@ -20,7 +20,7 @@ class NavBar extends Component {
         </div>
         <NavToggle />
         <NavMenu>
-          <LoginControl signUpHandler={this.props.signUpHandler} loginHandler={this.props.loginHandler} logoutHandler={this.props.logoutHandler}/>
+          <AppControl signUpHandler={this.props.signUpHandler} loginHandler={this.props.loginHandler} logoutHandler={this.props.logoutHandler}/>
         </NavMenu>
       </Header>
     )

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
-import CreateGroup from '../Groups/CreateGroup'
+import CreateGroup from '../../groups/CreateGroup'
 
 // signUpHandler
 
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => {
     isSignedIn: state.reduxTokenAuth.currentUser.isSignedIn
   }
 }
-class LoginControl extends Component {
+class AppControl extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -167,4 +167,4 @@ class LoginControl extends Component {
   }
 }
 
-export default connect(mapStateToProps)(LoginControl);
+export default connect(mapStateToProps)(AppControl);

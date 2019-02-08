@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EventsCarousel from '../components/ui-components/EventsCarousel';
+import EventsCarousel from '../components/ui-components/main-view/EventsCarousel';
 
 describe('<EventsCarousel />', () => {
   it('shows "Events near you" header text', () => {
