@@ -69,8 +69,8 @@ class LoginControl extends Component {
      'expiry': localStorage.getItem('expiry'),
      'uid': localStorage.getItem('uid'),
    }
-   let response = await axios.post('http://localhost:3000/events', { event }, { headers: credentials })
-   this.hideCreateEventForm()
+   let response = await axios.post('http://localhost:3000/groups/#{group.id}/events', { event }, { headers: credentials })
+   this.hideEventForm()
    console.log(response)
  }
 
