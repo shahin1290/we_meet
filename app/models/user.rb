@@ -12,6 +12,7 @@ class User < ApplicationRecord
 
   include DeviseTokenAuth::Concerns::User
   
+  has_one_attached :image
   has_many :rsvps
   has_many :memberships
   has_many :groups, through: :memberships
