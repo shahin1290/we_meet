@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Box } from "tailwind-react-ui";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 
 class ExploreCategories extends Component {
@@ -26,18 +27,20 @@ class ExploreCategories extends Component {
     let categoriesList = categories.map(category => {
       return (
         <Box inlineBlock>
-          <Card
-            className="card category-card"
-            key={category.id}
-            border
-            shadow
-            maxW="sm"
-          >
-            <div>
-              <img src={category.image || `./assets/images/${category.name.toLowerCase()}.png`} />
-            </div>
-          </Card>
-          <div className="category-name">{category.name}</div>
+          <Link to={{pathname: `/categories/${category.id}`, state: {category}}} style={{ textDecoration: 'none' }}>
+            <Card
+              className="card category-card"
+              key={category.id}
+              border
+              shadow
+              maxW="sm"
+            >
+              <div>
+                <img src={category.image || `./assets/images/${category.name.toLowerCase()}.png`} />
+              </div>
+            </Card>
+            <div className="category-name">{category.name}</div>
+          </Link>
         </Box>
       );
     });
