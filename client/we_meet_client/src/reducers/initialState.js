@@ -3,7 +3,8 @@ export default {
     isLoading: false,
     isSignedIn: false,
     attributes: {
-      email: null
+      email: null,
+      id: null
     },
   },
 };
