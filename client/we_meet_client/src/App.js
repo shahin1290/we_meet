@@ -62,6 +62,7 @@ class App extends Component {
     e.preventDefault()
     const { registerUser } = this.props
     let credentials = {
+      name: e.target[0].value,
       email: e.target[0].value,
       password: e.target[1].value,
       password_confirmation: e.target[3].value
