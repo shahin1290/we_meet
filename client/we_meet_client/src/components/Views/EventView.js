@@ -32,7 +32,6 @@ class EventView extends Component {
     const response = await axios.get(`http://localhost:3000/events/${id}`)
     const event = response.data.event
     this.setState({ event });
-    console.log(event)
   }
 
   render() {

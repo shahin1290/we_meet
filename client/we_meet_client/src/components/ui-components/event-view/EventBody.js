@@ -7,7 +7,7 @@ const EventBody = props => {
 
   attendeeList = event.attendees.map(attendee => {
     return (
-      <p >{attendee.name}</p>
+      <p key={attendee.id}>{attendee.name}</p>
     )
   })
   return (
