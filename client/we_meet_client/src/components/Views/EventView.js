@@ -20,15 +20,9 @@ class EventView extends Component {
   }
 
   componentDidMount() {
-
-    try {
-      this.setState({ event: this.props.location.state.event })
-    }
-    catch (err) {
-      // Get the number from url
-      let id = this.props.location.pathname.split('/').pop()
-      this.getEvent(id)
-    }
+    const id = this.props.location.state.event.id
+    this.getEvent(id)
+    debugger;
   }
 
   async getEvent(id) {

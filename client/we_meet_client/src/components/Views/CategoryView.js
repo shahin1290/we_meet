@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
+
 
 class CategoryView extends Component {
   constructor(props) {
@@ -24,12 +26,18 @@ class CategoryView extends Component {
 
 
   render() {
+    let groupList = this.state.category.groups.map(group => {
+      return (
+        <Link key={group.id} to={{pathname: `/groups/${group.id}`, state: {group}}} style={{ textDecoration: 'none' }}>
+          <div >{group.name}</div>
+        </Link>        
+      )
+    })
+
     return (
       <div>
         <h1>{this.state.category.name}</h1>
-        <h2>{this.state.category.groups.map(item => {
-            return <div key={item.id}>{item.name}</div>
-          })}</h2>
+        <h2>{groupList}</h2>
       </div>
     );
   }
