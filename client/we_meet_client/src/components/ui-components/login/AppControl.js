@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
-import CreateGroup from '../../Groups/CreateGroup'
+import CreateGroup from '../../groups/CreateGroup'
 
 // signUpHandler
 
