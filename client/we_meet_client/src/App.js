@@ -63,8 +63,8 @@ class App extends Component {
     const { registerUser } = this.props
     let credentials = {
       name: e.target[0].value,
-      email: e.target[0].value,
-      password: e.target[1].value,
+      email: e.target[1].value,
+      password: e.target[2].value,
       password_confirmation: e.target[3].value
     }
     registerUser(credentials)
