@@ -3,10 +3,12 @@ import { LinkButton, OutlineButton } from 'tailwind-react-ui';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+
 import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 import CreateGroup from '../../Groups/CreateGroup'
+import CreateEventForm from '../Events/EventForm'
 
 // signUpHandler
 
@@ -63,6 +65,27 @@ class AppControl extends Component {
   hideCreateGroupForm() {
     this.setState({ displayCreateGroupForm: false })
   }
+  displayEventForm() {
+    this.setState({ displayEventForm: true })
+  }
+ 
+   hideEventForm() {
+    this.setState({ displayEventForm: false })
+  }
+
+  async createEvent(event) {
+
+    const credentials = {
+     'access-token': localStorage.getItem('access-token'),
+     'token-type': localStorage.getItem('token-type'),
+     'client': localStorage.getItem('client'),
+     'expiry': localStorage.getItem('expiry'),
+     'uid': localStorage.getItem('uid'),
+   }
+   let response = await axios.post('http://localhost:3000/events', { event }, { headers: credentials })
+   this.hideCreateEventForm()
+   console.log(response)
+ }
 
   async createGroup(group) {
 
@@ -80,8 +103,10 @@ class AppControl extends Component {
 
   render() {
     const isSignedIn = this.props.isSignedIn;
-    let startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm
+    let startNewGroupLink, createEventLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm, eventForm
     if (isSignedIn) {
+      createEventLink = <LinkButton onClick={this.displayEventForm.bind(this)} text="grey-darkest" text-hocus="teal" style={{ textDecoration: 'none' }}>Create an event</LinkButton>
+
       startNewGroupLink = (
         <LinkButton
           id="create-group"
@@ -134,6 +159,15 @@ class AppControl extends Component {
       groupForm = <CreateGroup createGroupHandler={this.createGroup.bind(this)} hideFormHandler={this.hideCreateGroupForm.bind(this)} />
     };
 
+    if (this.state.displayEventForm) {
+      let overlay = document.getElementById('overlay')
+      if (overlay) {
+        overlay.style.display = ''
+        document.getElementById('create-event-form').reset()
+      }
+      eventForm = <CreateEventForm createEventHandler={this.createEvent.bind(this)} hideFormHandler={this.hideEventForm.bind(this)} />
+    }
+
     if (this.state.displaySignUpForm) {
       let overlay = document.getElementById('overlay')
       let form = document.getElementById('signup-form')
@@ -165,6 +199,7 @@ class AppControl extends Component {
         {loginForm}
         {signUpForm}
         {groupForm}
+        {eventForm}
       </>
     );
   }
