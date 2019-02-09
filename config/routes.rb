@@ -19,4 +19,6 @@ Rails.application.routes.draw do
     resources :memberships, only: [:create]
     resources :events, only: %i[index create]
   end
+
+  resources :users, only: [:show]
 end
