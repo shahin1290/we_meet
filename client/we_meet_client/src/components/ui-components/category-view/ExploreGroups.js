@@ -36,7 +36,7 @@ class ExploreGroups extends Component {
               maxW="sm"
             >
               <div>
-                <img src={group.image_url} />
+                <img src={group.image_url || `./assets/images/${group.name.toLowerCase()}.png`} />
               </div>
             </Card>
             <div className="category-name">{group.name}</div>
