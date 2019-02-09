@@ -26,7 +26,7 @@ class ExploreCategories extends Component {
     let categories = this.state.categories;
     let categoriesList = categories.map(category => {
       return (
-        <Box key={category.id} inlineBlock>
+        <Box key={category.id} inlineBlock style={{marginBottom:"20px"}}>
           <Link to={{pathname: `/categories/${category.id}`, state: {category}}} style={{ textDecoration: 'none' }}>
             <Card
               className="card category-card"

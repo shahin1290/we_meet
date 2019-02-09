@@ -3,7 +3,10 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
 
-  def index; end
+  def index
+    groups = Group.all
+    render json: groups, each_serializer: Groups::ShortShowSerializer
+  end
 
   def show
     group = Group.find(params[:id])
@@ -25,3 +28,9 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name, :category_id, :description, :location)
   end
 end
+
+
+# def index
+#   categories = Category.all
+#   render json: categories, each_serializer: Categories::IndexSerializer
+# end
