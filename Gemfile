@@ -12,6 +12,7 @@ gem 'puma', '~> 3.7'
 gem 'bootsnap', '>= 1.2', require: false
 gem 'rack-cors', require: 'rack/cors'
 gem 'active_model_serializers'
+# gem 'active_model_serializers', '~> 0.10.0.rc5'
 gem 'devise_token_auth'
 gem 'uglifier', '>= 1.3.0'
 gem 'aws-sdk-s3'
