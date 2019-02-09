@@ -8,7 +8,7 @@ import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 import CreateGroup from '../../Groups/CreateGroup'
-import CreateEventForm from '../Events/EventForm'
+import CreateEventForm from '../../Events/EventForm'
 
 // signUpHandler
 
