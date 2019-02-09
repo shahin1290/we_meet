@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from 'react-router-dom';
-
+import CategoryHero from "../ui-components/category-view/CategoryHero";
+import ExploreGroups from "../ui-components/category-view/ExploreGroups";
 
 
 class CategoryView extends Component {
@@ -36,10 +37,14 @@ class CategoryView extends Component {
     })
 
     return (
-      <div>
-        <h1>{this.state.category.name}</h1>
-        <h2>{groupList}</h2>
-      </div>
+      <>
+        {/* <div>
+          <h1>{this.state.category.name}</h1>
+          <h2>{groupList}</h2>
+        </div> */}
+        <CategoryHero />
+        <ExploreGroups />
+      </>
     );
   }
 }

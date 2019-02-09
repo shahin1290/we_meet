@@ -24,9 +24,9 @@ const EventBody = props => {
 
         </div>
         <div className="w-2/5">
-          <div className="sidebar" style={{ backgroundColor: "white", width: "300px", marginLeft: "3rem", marginTop: "3rem", borderRadius: "5px", border: "1px solid rgba(0,0,0,.12)" }}>
-            <div>{moment(event.date).format("dddd, MMMM DD, YYYY")}</div>
-            <div>{event.location}</div>
+          <div className="sidebar" style={{ padding:"0.5rem", backgroundColor: "white", width: "300px", marginLeft: "3rem", marginTop: "2.5rem", borderRadius: "5px", border: "1px solid rgba(0,0,0,.12)" }}>
+            <div style={{lineHeight:"1.5", paddingBottom:"1rem"}}><span style={{fontWeight:"bold"}}>Date:</span><br></br>{moment(event.date).format("dddd, MMMM DD, YYYY")}</div>
+            <div style={{lineHeight:"1.5", paddingBottom:"1rem"}}><span style={{fontWeight:"bold"}}>Location:</span><br></br>{event.location}</div>
             <img src="../../assets/images/map.png" />
           </div>
         </div>
