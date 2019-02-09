@@ -7,34 +7,32 @@ class EventView extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { event: {
-      title: '',
-      date: '',
-      time: '',
-      description: '',
-      location:'',
-      group: {
-        name: ''
+    this.state = {
+      event: {
+        title: '',
+        date: '',
+        time: '',
+        description: '',
+        location: '',
+        group: {
+          name: '',
+          organizer: {}
+        },
+        attendees: []
       }
-    } };
+    };
   }
 
   componentDidMount() {
-
-    try {
-      this.setState({ event: this.props.location.state.event })
-    }
-    catch (err) {
-      // Get the number from url
-      let id = this.props.location.pathname.split('/').pop()
-      this.getEvent(id)
-    }
+    const id = this.props.location.state.event.id
+    this.getEvent(id)
   }
 
   async getEvent(id) {
     const response = await axios.get(`http://localhost:3000/events/${id}`)
     const event = response.data.event
     this.setState({ event });
+    console.log(event)
   }
 
   render() {

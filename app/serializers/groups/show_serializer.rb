@@ -2,6 +2,7 @@ class Groups::ShowSerializer < ActiveModel::Serializer
   include Rails.application.routes.url_helpers
 
   attributes :id, :name, :description, :location
+  attribute :organizer
   attribute :image_url
   has_many :future_events, serializer: Events::ForGroupCollectionSerializer
   has_many :past_events, serializer: Events::ForGroupCollectionSerializer
@@ -14,6 +15,10 @@ class Groups::ShowSerializer < ActiveModel::Serializer
       # See the test config and https://github.com/rails/rails/issues/32500 
       object.image.service_url(expires_in: 1.hour, disposition: 'inline') if object.image.attachment
     end
+  end
+
+  def organizer
+    Users::ShowSerializer.new(object.organizer)
   end
 end
 
