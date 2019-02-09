@@ -1,5 +1,7 @@
 import React from "react";
 import moment from "moment";
+import { FillButton } from 'tailwind-react-ui';
+
 
 {/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}
 
@@ -85,6 +87,19 @@ const EventHeader = props => {
                 {event.group.name}
               </span>
             </p>
+          </div>
+          <div>
+            </div>
+            <h1 style={{ marginTop:"1.4rem", fontSize:"1.4rem", position:"absolute", right:"18.5rem", top:"5rem" }}>Are you going?</h1>
+            <div>
+            <FillButton style={{position:"absolute", width:"250px", right:"13.3rem", top:"9rem", fontSize:"2rem"}}
+                brand='secondary'
+                small
+                // id={`attend-event-${event.id}`}
+                // onClick={this.props.rsvpHandler.bind(this, event.id)}
+              >
+                RSVP
+            </FillButton>
           </div>
         </div>
       </div>
