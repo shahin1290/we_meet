@@ -5,6 +5,7 @@ import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
 import CreateGroup from '../../Groups/CreateGroup'
+import SendEmail from '../../Groups/SendEmail'
 
 // signUpHandler
 
@@ -93,7 +94,7 @@ class AppControl extends Component {
       'expiry': localStorage.getItem('expiry'),
       'uid': localStorage.getItem('uid'),
     }
-    let response = await axios.post('http://localhost:3000/groups/:group_id/notifications', { email }, { headers: credentials })
+    let response = await axios.post('http://localhost:3000/groups/#{group.id}/notifications', { email }, { headers: credentials })
     this.setState({ navBarNotification: response.data.message, displaySendEmailForm: false })
 
   }
@@ -101,7 +102,7 @@ class AppControl extends Component {
 
   render() {
     const isSignedIn = this.props.isSignedIn;
-    let sendEmailLink, startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm, emailForm
+    let sendEmailLink, startNewGroupLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm, sendEmail
     if (isSignedIn) {
       sendEmailLink = (
         <LinkButton
@@ -160,7 +161,7 @@ class AppControl extends Component {
         overlay.style.display = ''
         document.getElementById('send-email-form').reset()
       }
-      emailForm = <SendEmail sendEmailHandler={this.sendEmail.bind(this)} hideFormHandler={this.hideSendEmailForm.bind(this)} />
+      sendEmail = <SendEmail sendEmailHandler={this.sendEmail.bind(this)} hideFormHandler={this.hideSendEmailForm.bind(this)} />
     };
 
     if (this.state.displayCreateGroupForm) {

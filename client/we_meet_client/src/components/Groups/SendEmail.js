@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import axios from "axios";
 
-
-class CreateGroup extends Component {
+class SendEmail extends Component {
 
   constructor(props) {
     super(props);
@@ -10,18 +8,8 @@ class CreateGroup extends Component {
       description: ''
     };
     this.onChange = this.onChange.bind(this)
-    this.createGroupHandler = this.props.createGroupHandler.bind(this)
+    this.sendEmailHandler = this.props.sendEmailHandler.bind(this)
   }
-
-  // componentDidMount() {
-  //   this.getCategories();
-  // }
-
-  // async getCategories() {
-  //   const response = await axios.get("http://localhost:3000/categories")
-  //   const categories = response.data.categories
-  //   this.setState({ categories });
-  // }
 
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value })
@@ -40,11 +28,11 @@ class CreateGroup extends Component {
         <div className="fixed shadow-inner max-w-md pin-b pin-x align-top m-auto justify-end p-8 bg-white w-full flex flex-col relative justify-center rounded h-auto shadow">
           <button onClick={this.props.hideFormHandler} className="modal_close">X</button>
           <form id="send-email-form" className="w-full max-w-md" onSubmit={this.sendEmail.bind(this)}>
-            <h1 className="font-normal text-3xl text-grey-darkest leading-loose my-3 w-full">Create a Group</h1>
+            <h1 className="font-normal text-3xl text-grey-darkest leading-loose my-3 w-full">Send  Notification</h1>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className='w-full px-3 mb-6 md:mb-0'>
                 <label className="block uppercase tracking-wide text-grey-darker text-xs mb-2">
-                  Description
+                  Write your message
                 </label>
                 <textarea
                   type="textarea"
@@ -65,4 +53,4 @@ class CreateGroup extends Component {
   }
 }
 
-export default CreateGroup
+export default SendEmail
