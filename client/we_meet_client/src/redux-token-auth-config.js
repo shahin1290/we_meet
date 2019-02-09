@@ -4,12 +4,13 @@ const config = {
   authUrl: 'http://localhost:3000/auth',
   userAttributes: {
     
-    // email: 'email',
-    // imageUrl: 'image',
+    email: 'email',
+    imageUrl: 'image_url',
     'access-token': 'access-token',
     client: 'client',
     expiry: 'expiry',
-    uid: 'uid'
+    uid: 'uid',
+    id: 'id'
   },
   userRegistrationAttributes: {
     firstName: 'first_name',

@@ -4,7 +4,9 @@ export default {
     isSignedIn: false,
     attributes: {
       email: null,
-      id: null
+      id: null,
+      name: null,
+      imageUrl: null
     },
   },
 };
