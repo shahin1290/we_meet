@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { LinkButton, OutlineButton } from 'tailwind-react-ui';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import axios from "axios";
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
@@ -10,7 +12,8 @@ import CreateGroup from '../../Groups/CreateGroup'
 
 const mapStateToProps = (state) => {
   return {
-    isSignedIn: state.reduxTokenAuth.currentUser.isSignedIn
+    isSignedIn: state.reduxTokenAuth.currentUser.isSignedIn,
+    currentUser: state.reduxTokenAuth.currentUser
   }
 }
 class AppControl extends Component {
@@ -89,12 +92,12 @@ class AppControl extends Component {
           Start a new group
       </LinkButton>);
       profileLink = (
-        <LinkButton
+        <Link to={{pathname: `/users/${this.props.currentUser.attributes.id}`, state: {currentUser: this.props.currentUser}}}
           text="grey-darkest"
           text-hocus="teal"
           style={{ marginLeft: '13px', textDecoration: 'none' }}>
           Profile
-      </LinkButton>);
+      </Link>);
       logoutButton = (
         <OutlineButton
           onClick={this.handleLogoutClick.bind(this)}

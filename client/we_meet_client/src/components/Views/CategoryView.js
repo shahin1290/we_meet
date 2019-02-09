@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import CategoryHero from "../ui-components/category-view/CategoryHero";
 import ExploreGroups from "../ui-components/category-view/ExploreGroups";
 
+
 class CategoryView extends Component {
   constructor(props) {
     super(props);

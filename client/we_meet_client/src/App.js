@@ -6,10 +6,14 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' 
 import NavBar from './components/ui-components/NavBar'
 import Footer from './components/ui-components/Footer'
+
 import MainView from './components/Views/MainView';
 import EventView from './components/Views/EventView';
 import GroupView from './components/Views/GroupView';
 import CategoryView from './components/Views/CategoryView';
+
+import UserProfileView from './components/Views/UserProfileView';
+
 class App extends Component {
 
   constructor(props) {
@@ -100,6 +104,7 @@ class App extends Component {
           <Route exact path='/events/:id' component={EventView}></Route>
           <Route exact path='/groups/:id' component={GroupView}></Route>
           <Route exact path='/categories/:id' component={CategoryView}></Route>
+          <Route exact path='/users/:id' component={UserProfileView}></Route>
 
         </Switch>
         <Footer />
