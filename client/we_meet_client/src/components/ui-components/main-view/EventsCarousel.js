@@ -33,7 +33,7 @@ class EventsCarousel extends Component {
             <Card className="card event-card" id="card" border maxW="sm">
               <div>
                 <img
-                  src={event.image || './assets/images/tech.png'}
+                  src={event.image_url}
                   className="card-image"
                   alt={`image_${event.id}`}
                 />
@@ -55,7 +55,7 @@ class EventsCarousel extends Component {
               <div style={{ height: "40px" }}>
                 <img
                   className="bottom-left event-card-avatar"
-                  src={event.organizer.image || './assets/images/person.jpg'}
+                  src={event.organizer.image_url }
                   alt={`image_${event.organizer.email }`}
                 />
                 <div className="event-card-extra-info">

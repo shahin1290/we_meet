@@ -1,32 +1,31 @@
 import React, { Component } from "react";
 import axios from "axios";
+import EventHeader from '../ui-components/event-view/EventHeader'
+import EventBody from '../ui-components/event-view/EventBody'
 
 class EventView extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { event: {
-      title: '',
-      date: '',
-      time: '',
-      description: '',
-      location:'',
-      group: {
-        name: ''
+    this.state = {
+      event: {
+        title: '',
+        date: '',
+        time: '',
+        description: '',
+        location: '',
+        group: {
+          name: '',
+          organizer: {}
+        },
+        attendees: []
       }
-    } };
+    };
   }
 
   componentDidMount() {
-
-    try {
-      this.setState({ event: this.props.location.state.event })
-    }
-    catch (err) {
-      // Get the number from url
-      let id = this.props.location.pathname.split('/').pop()
-      this.getEvent(id)
-    }
+    const id = this.props.location.state.event.id
+    this.getEvent(id)
   }
 
   async getEvent(id) {
@@ -38,27 +37,11 @@ class EventView extends Component {
   render() {
     return (
       <>
-        <div
-          style={{
-            fontWeight: "700",
-            textAlign: "center",
-            fontSize: "40px",
-            marginBottom: "50px"
-          }}
-        >
-          Title: {this.state.event.title}<br></br>
-          Date: {this.state.event.date}<br></br>
-          Time: {this.state.event.time}<br></br>
-          Description:{this.state.event.description}<br></br>
-          Location: {this.state.event.location}<br></br>
-          Organized by: {this.state.event.group.name}<br></br>
-        </div>
+        <EventHeader event={this.state.event} />
+        <EventBody event={this.state.event} />
       </>
     );
   }
 }
 
 export default EventView;
-
-{/* Leave the below in until we decide what to do with it */}
-{/* <Events rsvpHandler={this.rsvp} responseMessage={this.state.containerMessage} /> */}

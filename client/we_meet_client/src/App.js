@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/tailwind.css';
 import axios from "axios";
+<<<<<<< HEAD
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' 
 import NavBar from './components/ui-components/NavBar'
@@ -9,6 +10,16 @@ import Footer from './components/ui-components/Footer'
 import MainView from './components/Views/MainView';
 import EventView from './components/Views/EventView';
 
+=======
+import { Switch, Route, withRouter } from 'react-router-dom';
+import { signInUser, signOutUser, registerUser } from './redux-token-auth-config';
+import NavBar from './components/ui-components/NavBar';
+import Footer from './components/ui-components/Footer';
+import MainView from './components/views/MainView';
+import EventView from './components/views/EventView';
+import GroupView from './components/views/GroupView';
+import CategoryView from './components/views/CategoryView';
+>>>>>>> 23ad6cd910353c8fba25e47dbb021de3161a5dee
 class App extends Component {
 
   constructor(props) {
@@ -97,6 +108,9 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={MainView}></Route>
           <Route exact path='/events/:id' component={EventView}></Route>
+          <Route exact path='/groups/:id' component={GroupView}></Route>
+          <Route exact path='/categories/:id' component={CategoryView}></Route>
+
         </Switch>
         <Footer />
       </>
