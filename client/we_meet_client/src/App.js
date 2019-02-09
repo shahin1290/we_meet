@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './css/tailwind.css';
 import axios from "axios";
-import { Switch, Route, withRouter } from 'react-router-dom';
-import { signInUser, signOutUser, registerUser } from './redux-token-auth-config';
-import NavBar from './components/ui-components/NavBar';
-import Footer from './components/ui-components/Footer';
-import MainView from './components/views/MainView';
-import EventView from './components/views/EventView';
-import GroupView from './components/views/GroupView';
-import CategoryView from './components/views/CategoryView';
+import { Switch, Route, withRouter } from 'react-router-dom'
+import { signInUser, signOutUser, registerUser } from './redux-token-auth-config' 
+import NavBar from './components/ui-components/NavBar'
+import Footer from './components/ui-components/Footer'
+import MainView from './components/Views/MainView';
+import EventView from './components/Views/EventView';
+import GroupView from './components/Views/GroupView';
+import CategoryView from './components/Views/CategoryView';
 class App extends Component {
 
   constructor(props) {
@@ -63,8 +63,9 @@ class App extends Component {
     e.preventDefault()
     const { registerUser } = this.props
     let credentials = {
-      email: e.target[0].value,
-      password: e.target[1].value,
+      name: e.target[0].value,
+      email: e.target[1].value,
+      password: e.target[2].value,
       password_confirmation: e.target[3].value
     }
     registerUser(credentials)
