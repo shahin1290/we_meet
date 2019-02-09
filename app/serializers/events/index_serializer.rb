@@ -17,7 +17,7 @@ class Events::IndexSerializer < ActiveModel::Serializer
   end
 
   def organizer
-    { name: object.group.organizer.name }
+    Users::ShowSerializer.new(object.group.organizer)
   end
 
   def time

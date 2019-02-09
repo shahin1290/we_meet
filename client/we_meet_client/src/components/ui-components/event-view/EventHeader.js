@@ -49,13 +49,14 @@ const EventHeader = props => {
               lineHeight: "0.8",
               marginLeft:"0.1rem"
             }}>
-                {moment(event.date).format("dddd, MMMM DD, ")}
-                {event.time}
+                {moment(event.date).format("MMMM Do YYYY")}
+                {" at "}
+                {moment(event.time).format("h:mm a")}
           </div>
           <h1 style={{ fontSize: "2.75rem" }}>{event.title}</h1>
           <div>
             <img
-              src="../../assets/images/person.jpg"
+              src={event.group.organizer.image_url}
               style={{
                 height: "40px",
                 borderRadius: "80px",
@@ -75,7 +76,7 @@ const EventHeader = props => {
             <p>
               Hosted by{" "}
               <span style={{ fontWeight: "bold", color: "teal" }}>
-                Organizer's name here
+                {event.group.organizer.name}
               </span>
             </p>
             <p>
