@@ -16,7 +16,8 @@ class GroupView extends Component {
       id: '',
       image_url: '',
       future_events: [],
-      past_events: []
+      past_events: [],
+      members: []
     } };
   }
 
