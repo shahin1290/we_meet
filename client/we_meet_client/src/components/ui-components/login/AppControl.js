@@ -47,7 +47,6 @@ class AppControl extends Component {
     this.setState({ displaySignUpForm: false })
   }
 
-
   handleLoginClick(e) {
     this.setState({ displayLoginForm: false })
     this.loginHandler(e);
@@ -65,12 +64,12 @@ class AppControl extends Component {
   hideCreateGroupForm() {
     this.setState({ displayCreateGroupForm: false })
   }
-  displayEventForm() {
-    this.setState({ displayEventForm: true })
+  displayCreateEventForm() {
+    this.setState({ displayCreateEventForm: true })
   }
  
-   hideEventForm() {
-    this.setState({ displayEventForm: false })
+  hideCreateEventForm() {
+    this.setState({ displayCreateEventForm: false })
   }
 
   async createEvent(event) {
@@ -83,7 +82,7 @@ class AppControl extends Component {
      'uid': localStorage.getItem('uid'),
    }
    let response = await axios.post('http://localhost:3000/events', { event }, { headers: credentials })
-   this.hideCreateEventForm()
+   this.setState({ navBarNotification: response.data.message, displayCreateEventForm: false })
    console.log(response)
  }
 
@@ -103,10 +102,17 @@ class AppControl extends Component {
 
   render() {
     const isSignedIn = this.props.isSignedIn;
-    let startNewGroupLink, createEventLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm, eventForm
+    let startNewGroupLink, createNewEventLink, logoutButton, profileLink, loginButton, registerButton, loginForm, signUpForm, groupForm, eventForm
     if (isSignedIn) {
-      createEventLink = <LinkButton onClick={this.displayEventForm.bind(this)} text="grey-darkest" text-hocus="teal" style={{ textDecoration: 'none' }}>Create an event</LinkButton>
-
+      createNewEventLink = (
+        <LinkButton
+          id="create-event-form"
+          onClick={this.displayCreateEventForm.bind(this)}
+          text="grey-darkest"
+          text-hocus="teal"
+          style={{ textDecoration: 'none' }}>
+          Create a new event
+      </LinkButton>);
       startNewGroupLink = (
         <LinkButton
           id="create-group"
@@ -159,13 +165,13 @@ class AppControl extends Component {
       groupForm = <CreateGroup createGroupHandler={this.createGroup.bind(this)} hideFormHandler={this.hideCreateGroupForm.bind(this)} />
     };
 
-    if (this.state.displayEventForm) {
+    if (this.state.displayCreateEventForm) {
       let overlay = document.getElementById('overlay')
       if (overlay) {
         overlay.style.display = ''
         document.getElementById('create-event-form').reset()
       }
-      eventForm = <CreateEventForm createEventHandler={this.createEvent.bind(this)} hideFormHandler={this.hideEventForm.bind(this)} />
+      eventForm = <CreateEventForm createEventHandler={this.createEvent.bind(this)} hideFormHandler={this.hideCreateEventForm.bind(this)} />
     }
 
     if (this.state.displaySignUpForm) {
@@ -192,6 +198,7 @@ class AppControl extends Component {
       <>
         <p style={{color: 'black'}}>{this.state.navBarNotification}</p>
         {startNewGroupLink}
+        {createNewEventLink}
         {profileLink}
         {logoutButton}
         {loginButton}

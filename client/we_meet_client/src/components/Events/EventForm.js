@@ -39,7 +39,7 @@ class CreateEventForm extends Component {
       <div className="fixed z-50 pin overflow-auto bg-smoke-dark flex">
         <div className="fixed shadow-inner max-w-md pin-b pin-x align-top m-auto justify-end p-8 bg-white w-full flex flex-col relative justify-center rounded h-auto shadow">
           <button onClick={this.props.hideFormHandler} className="modal_close">X</button>
-          <form id="create-event-form" className="w-full max-w-md" onSubmit={this.createEvent.bind(this)}>
+          <form id="create-event" className="w-full max-w-md" onSubmit={this.createEvent.bind(this)}>
             <h1 className="font-normal text-3xl text-grey-darkest leading-loose my-3 w-full">Create an Event</h1>
             <div className="flex flex-wrap -mx-3 mb-6">
               <div className='w-full px-3 mb-6 md:mb-0'>
