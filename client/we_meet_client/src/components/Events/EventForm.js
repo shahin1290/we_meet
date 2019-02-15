@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import axios from "axios";
 
 
 class CreateEventForm extends Component {
-
   constructor(props) {
    super(props);
    this.state = {
@@ -14,7 +12,6 @@ class CreateEventForm extends Component {
      time: ''
    };
    this.onChange = this.onChange.bind(this)
-   this.createEventHandler = this.props.createEventHandler.bind(this)
  }
 
    onChange(e) {
@@ -23,22 +20,21 @@ class CreateEventForm extends Component {
 
   createEvent(e) {
    e.preventDefault();
-   const event = {
+   const newEvent = {
      title: this.state.title,
      description: this.state.description,
      location: this.state.location,
      date: this.state.date,
      time: this.state.time
    }
-   this.createEventHandler(event);
+   this.props.createEventHandler(newEvent);
  }
-
 
   render() {
     return (
       <div className="fixed z-50 pin overflow-auto bg-smoke-dark flex">
         <div className="fixed shadow-inner max-w-md pin-b pin-x align-top m-auto justify-end p-8 bg-white w-full flex flex-col relative justify-center rounded h-auto shadow">
-          <button onClick={this.props.hideFormHandler} className="modal_close">X</button>
+          <button onClick={this.props.hideCreateEventForm} className="modal_close">X</button>
           <form id="create-event" className="w-full max-w-md" onSubmit={this.createEvent.bind(this)}>
             <h1 className="font-normal text-3xl text-grey-darkest leading-loose my-3 w-full">Create an Event</h1>
             <div className="flex flex-wrap -mx-3 mb-6">
