@@ -12,11 +12,11 @@ const GroupBody = props => {
     )
   })
 
-  // attendeeList = event.attendees.map(attendee => {
-  //   return (
-  //     <p key={attendee.id}>{attendee.name}</p>
-  //   )
-  // })
+  const membersList = group.members.map(member => {
+    return (
+      <p key={member.id}>{member.name}</p>
+    )
+  })
   return (
     <div style={{ backgroundColor: "#f6f7f8" }}>
       <div className="flex">
@@ -33,7 +33,8 @@ const GroupBody = props => {
         </div>
         <div className="w-2/5">
           <div style={{ height:"auto", width:"300px", position:"absolute", right:"16.5rem", backgroundColor: "white", width: "300px", marginTop: "2.5rem", borderRadius: "5px", border: "1px solid rgba(0,0,0,.12)" }}>
-            <div style={{fontSize:"20px", padding:"0.5rem"}}> Members (show number)</div>
+            <div style={{fontSize:"20px", padding:"0.5rem"}}> Members ({group.members.length})</div>
+            {membersList}
             <FillButton
                 brand='secondary'
                 small
